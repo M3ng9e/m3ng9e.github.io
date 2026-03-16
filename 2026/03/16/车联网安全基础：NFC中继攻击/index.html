@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
   
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 8.1.1">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,15 +17,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>归档 - M3ng9e</title>
+  <title>车联网安全基础：NFC中继攻击 - M3ng9e</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://example.com/archives/2026/">
+    <meta name="description" content="NFC中继测试的相关知识~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="车联网安全基础：NFC中继攻击">
+<meta property="og:url" content="http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/">
 <meta property="og:site_name" content="M3ng9e">
+<meta property="og:description" content="NFC中继测试的相关知识~">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg">
+<meta property="article:published_time" content="2026-03-16T08:19:38.000Z">
+<meta property="article:modified_time" content="2026-03-16T09:25:07.546Z">
 <meta property="article:author" content="M3ng9e">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg">
@@ -46,12 +50,12 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"http://example.com","author":{"@type":"Person","name":"M3ng9e","sameAs":[],"image":"https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg"},"name":"M3ng9e","description":"","url":"http://example.com"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"M3ng9e","sameAs":[],"image":"https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg"},"dateCreated":"2026-03-16T16:19:38+08:00","dateModified":"2026-03-16T17:25:07+08:00","datePublished":"2026-03-16T16:19:38+08:00","description":"","headline":"车联网安全基础：NFC中继攻击","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/"},"publisher":{"@type":"Organization","name":"M3ng9e","sameAs":[],"image":"https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg","logo":{"@type":"ImageObject","url":"https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg"}},"url":"http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/","thumbnailUrl":null,"image":[]}</script>
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/xaoxuu/favicon/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/xaoxuu/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/xaoxuu/favicon/favicon-16x16.png"><link rel="manifest" href="/assets/xaoxuu/favicon/site.webmanifest"><link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico"><meta name="theme-color" content="#f8f8f8"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" />
 </head>
 <body>
 
-<div class="l_body index" id="start" layout="undefined" type="undefined" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">M3ng9e</div><div class="sub normal cap">"山高万仞，只登一步"</div><div class="sub hover cap" style="opacity:0"> "我只控制我能控制的控制" </div></a></div></header>
@@ -63,17 +67,153 @@
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
+
+
 <widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/"><span class="title">车联网安全基础：NFC中继攻击</span></a><a class="item title" href="/2026/03/16/IPv6%E5%88%9D%E6%8E%A2%EF%BC%9A%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E4%B8%8E-Web-%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/"><span class="title">IPv6初探：协议原理与 Web 服务搭建全记录</span></a><a class="item title" href="/2026/03/16/BLE-%E8%93%9D%E7%89%99%E5%8D%8F%E8%AE%AE%EF%BC%9A%E6%8A%93%E5%8C%85%E5%AE%9E%E6%88%98-HCI-%E7%A9%BA%E5%8F%A3/"><span class="title">BLE 蓝牙协议：抓包实战 (HCI + 空口)</span></a><a class="item title" href="/2026/03/16/Blog%E6%90%AD%E5%BB%BA%EF%BC%88github-Hexo-Stellar-Cloudflare-R2-PicGo%EF%BC%89/"><span class="title">Blog搭建（github+Hexo+Stellar+Cloudflare R2+PicGo）</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">M3ng9e</div><div class="sub normal cap">"山高万仞，只登一步"</div><div class="sub hover cap" style="opacity:0"> "我只控制我能控制的控制" </div></a></div></header>
-
- 
 
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">近期发布</a><a class="active" href="/archives/">归档</a></nav></div></div></div><div class="post-list archives"><article class="" id="archive"><div class='archive-header h4'>2026</div><div class="archive-list"><a class='post fs14' href="/2026/03/16/BLE-%E8%93%9D%E7%89%99%E5%8D%8F%E8%AE%AE%EF%BC%9A%E6%8A%93%E5%8C%85%E5%AE%9E%E6%88%98-HCI-%E7%A9%BA%E5%8F%A3/"><time>03-16</time><span>BLE 蓝牙协议：抓包实战 (HCI + 空口)</span></a></div><div class="archive-list"><a class='post fs14' href="/2026/03/16/IPv6%E5%88%9D%E6%8E%A2%EF%BC%9A%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E4%B8%8E-Web-%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/"><time>03-16</time><span>IPv6初探：协议原理与 Web 服务搭建全记录</span></a></div><div class="archive-list"><a class='post fs14' href="/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/"><time>03-16</time><span>车联网安全基础：NFC中继攻击</span></a></div><div class="archive-list"><a class='post fs14' href="/2026/03/16/Blog%E6%90%AD%E5%BB%BA%EF%BC%88github-Hexo-Stellar-Cloudflare-R2-PicGo%EF%BC%89/"><time>03-16</time><span>Blog搭建（github+Hexo+Stellar+Cloudflare R2+PicGo）</span></a></div></article></div>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-03-16T08:19:38.000Z">2026-03-16</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-03-16T09:25:07.546Z">2026-03-16</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>车联网安全基础：NFC中继攻击</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p><strong>免责声明：</strong> 本文仅用于技术交流与安全研究，文中涉及的漏洞复现均在授权环境下进行。请勿利用文中技术进行非法活动，否则后果自负。</p>
+<p>上个月，我有幸参与了某大厂未上市车型的车联网安全项目。在测试过程中，我们通过中继攻击（Relay Attack）成功解锁了车辆。当时虽然复现了漏洞并记录了状态码，但对于底层的交互逻辑、请求响应（APDU）的具体细节理解尚浅。为了知其然更知其所以然，本文特此对NFC通信逻辑在数字钥匙场景下的应用进行复盘和补全。</p>
+<h1 id="NFC中继攻击"><a href="#NFC中继攻击" class="headerlink" title="NFC中继攻击"></a>NFC中继攻击</h1><h2 id="了解NFC"><a href="#了解NFC" class="headerlink" title="了解NFC"></a>了解NFC</h2><p>NFC（Near Field Communication）不仅仅是支付工具（公交卡、银行卡、碰一碰支付等等。），更是目前车联网数字钥匙（Digital Key）的主流实现方案之一。</p>
+<p>目前的车机方案（如特斯拉、比亚迪等）主要遵循 <strong>CCC（Car Connectivity Consortium）</strong> 规范。与传统的门禁卡不同，车规级的NFC通信绝不是简单的 UID（唯一标识符）匹配，其中会包含权限验证的过程。</p>
+<p>NFC（Near Field Communication）是一种基于 RFID（13.56MHz）演变而来的近场通信技术，通信距离一般小于20CM（实际4CM），有三种工作模式：</p>
+<ol>
+<li><strong>卡模拟模式（Tag&#x2F;Card Emulation）：</strong> 卡片端，用户的手机或NFC卡片。</li>
+<li><strong>读卡器模式（Reader&#x2F;Writer）：</strong> 读卡器端， 车辆主动发射射频场（RF Field），寻找并供电给附近的手机&#x2F;卡片，发送指令（Command）并接收响应（Response）。</li>
+<li><strong>点对点模式（P2P）：</strong> 两个 NFC 设备交换数据。</li>
+</ol>
+<h2 id="NFC的交互逻辑"><a href="#NFC的交互逻辑" class="headerlink" title="NFC的交互逻辑"></a>NFC的交互逻辑</h2><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126225340334.png" alt="image-20260126225340334"  />
+
+<h2 id="NFC中继攻击-1"><a href="#NFC中继攻击-1" class="headerlink" title="NFC中继攻击"></a>NFC中继攻击</h2><p>了解了NFC的通信交互逻辑后，我们来了解一下中继攻击是什么？</p>
+<p>维基百科：中继（Relay）是一种在两个网络节点、设备或交换中心之间转发、增强信号或数据的通信技术。</p>
+<p>我们可以简单理解为中继就是接力，接力转发放大信号。</p>
+<p>如何接力呢？如图所示。</p>
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126225758593.png" alt="image-20260126225758593" style="zoom:67%;" />
+
+<p>本来的流程中，是<strong>tag1&lt;-&gt;reader1</strong>两个人近距离交流，现在需要远距离传话，因此额外需要两个人。</p>
+<p><strong>tag1</strong>&lt;–&gt;reader2&lt;–&gt;tag2&lt;–&gt;<strong>reader1</strong>，增加了一个reader2和tag2，由于通信传输需要保证信息传输的可靠稳定，我们又叫了一个哥们，他是大喇叭联络员，他一手拉着 <code>Reader2</code>，一手拉着 <code>Tag2</code>，于是链路就变成了这样<strong>tag1</strong> &lt;–&gt; reader2 &lt;–&gt; [服务器] &lt;–&gt; tag2 &lt;–&gt; <strong>reader1</strong>，这样就能保证信息顺畅的传输了。</p>
+<p>中继攻击的重点就是把短距离通信变成了长距离通信，扩大了通讯范围，甚至扩大到全球。</p>
+<p>设想一下这样的场景：</p>
+<p>你在饭店吃饭，手机放桌上了，车停在外面。这时有两个攻击者，一个靠近车的NFC，一个靠近你的手机，并搭建了服务器，在1-2秒内就可以完成打开你的车门，把你的车开走了，可以一直把车开到熄火为止。</p>
+<h2 id="NFC中继攻击实践"><a href="#NFC中继攻击实践" class="headerlink" title="NFC中继攻击实践"></a>NFC中继攻击实践</h2><p>准备：两台安装NFCgate的手机（需要xposed）、一台电脑（服务器）</p>
+<p>APP下载地址：<a target="_blank" rel="noopener" href="https://github.com/nfcgate/nfcgate">https://github.com/nfcgate/nfcgate</a></p>
+<p>服务端下载地址：<a target="_blank" rel="noopener" href="https://github.com/nfcgate/server">https://github.com/nfcgate/server</a></p>
+<ol>
+<li><p>电脑开启热点，两台手机连上热点，然后在电脑上开启server.py</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126234653767.png" alt="image-20260126234653767"></p>
+</li>
+<li><p>两台手机都在settings里设置服务器ip和端口</p>
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126234904717.png" alt="image-20260126234904717" style="zoom:50%;" />
+
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126234913221.png" alt="image-20260126234913221" style="zoom:50%;" />
+</li>
+<li><p>回到主页面，找到“Relay Mode”功能，一台设置为tag，一台设置为reader，连上服务器</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126235853431.png" alt="image-20260126235853431"></p>
+</li>
+<li><p>先锁车，将reader与手机NFC感应区靠近，将tag与车辆NFC感应区靠近，就会自动发送NFC通信数据进行中继攻击了，如果你的车开锁了，那么恭喜你NFC中继攻击成功了。</p>
+</li>
+<li><p>为了进一步学习原理，我们需要了解其数据交互的大概逻辑，这是ADPU数据交互的过程的示例</p>
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260127000911675.png" alt="image-20260127000911675" style="zoom:50%;" /></li>
+</ol>
+<p>其中我们重点需要知道响应码含义，协议请求头的字段含义，参数等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C-APDU (读卡器发出的指令):</span><br><span class="line">00 A4 04 00 ...  &lt;-- Select File (标准，选择应用)</span><br><span class="line">80 / 84 开头： 行业标准或私有 (Proprietary / GlobalPlatform)</span><br><span class="line"></span><br><span class="line">R-APDU (卡片回复):</span><br><span class="line">6A 82            &lt;-- File Not Found (文件未找到)</span><br><span class="line">90 00            &lt;-- Success (成功)</span><br></pre></td></tr></table></figure>
+
+<p>其他的具体协议数据字节代表的含义大家可以自行查阅资料学习， 重点是根据通讯数据，进而推算交互逻辑进行分析。</p>
+<p><strong>C-APDU</strong>：读卡器端</p>
+<table>
+<thead>
+<tr>
+<th><strong>必须部分 (Header)</strong></th>
+<th></th>
+<th></th>
+<th></th>
+<th><strong>可选部分 (Body)</strong></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CLA</strong></td>
+<td><strong>INS</strong></td>
+<td><strong>P1</strong></td>
+<td><strong>P2</strong></td>
+<td><strong>Lc</strong></td>
+<td><strong>Data</strong></td>
+<td><strong>Le</strong></td>
+</tr>
+<tr>
+<td>类别</td>
+<td>指令</td>
+<td>参数1</td>
+<td>参数2</td>
+<td>数据长度</td>
+<td>数据内容</td>
+<td>期望回复长度</td>
+</tr>
+</tbody></table>
+<p> <strong>R-APDU</strong>：卡片端</p>
+<table>
+<thead>
+<tr>
+<th><strong>可选部分 (Body)</strong></th>
+<th><strong>必须部分 (Trailer)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Data</strong></td>
+<td><strong>SW1 SW2</strong></td>
+</tr>
+<tr>
+<td>实际数据</td>
+<td>状态字 (Status Word)</td>
+</tr>
+</tbody></table>
+<h2 id="如何防御NFC中继攻击"><a href="#如何防御NFC中继攻击" class="headerlink" title="如何防御NFC中继攻击"></a>如何防御NFC中继攻击</h2><p>核心是延时检测，看时间在不在纳秒单位内。</p>
+<ol>
+<li>UWB（超宽带）技术可以有效防御NFC中继攻击。通过其厘米级的高精度定位和基于飞行时间（ToF）的安全时间戳技术，UWB能准确测量设备间的物理距离。即使攻击者在远端中继信号，UWB也会因测量出的传输时延过长而判定为非法操作，从而阻止攻击。</li>
+<li>时序与协议优化，严格的 FWT (Frame Waiting Time) 限制（ &lt; 20ms），禁用 WTX (Waiting Time Extension)： 读卡器拒绝卡片发出的“请求加时”指令，强制要求即时响应。</li>
+<li>多因素认证 (MFA &#x2F; Biometrics)， 即使你偷了我的信号，你没有我的指纹&#x2F;人脸。</li>
+<li>运动传感器 (Motion Sensor)，车钥匙内部装有加速度计。钥匙静止不动超过 X 分钟，钥匙会自动<strong>切断无线发射功能</strong>（休眠），只有当你拿起钥匙走路时，无线发射功能才会被唤醒。</li>
+</ol>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2026/03/16/IPv6%E5%88%9D%E6%8E%A2%EF%BC%9A%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E4%B8%8E-Web-%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/">IPv6初探：协议原理与 Web 服务搭建全记录</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2026/03/16/Blog%E6%90%AD%E5%BB%BA%EF%BC%88github-Hexo-Stellar-Cloudflare-R2-PicGo%EF%BC%89/">Blog搭建（github+Hexo+Stellar+Cloudflare R2+PicGo）</a></div></section></div>
+
+
+
+
+
+
 <footer class="page-footer footnote"><hr><div class="text"><center>
   "追风赶月莫停留，平芜尽处是春山"
   <br>
@@ -103,7 +243,12 @@ show_runtime();
 <center>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB"><span class="toc-text">NFC中继攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3NFC"><span class="toc-text">了解NFC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC%E7%9A%84%E4%BA%A4%E4%BA%92%E9%80%BB%E8%BE%91"><span class="toc-text">NFC的交互逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB-1"><span class="toc-text">NFC中继攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB%E5%AE%9E%E8%B7%B5"><span class="toc-text">NFC中继攻击实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%98%B2%E5%BE%A1NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB"><span class="toc-text">如何防御NFC中继攻击</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>

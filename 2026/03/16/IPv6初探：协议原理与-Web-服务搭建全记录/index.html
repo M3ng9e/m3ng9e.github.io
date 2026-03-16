@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
   
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 8.1.1">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,15 +17,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>归档 - M3ng9e</title>
+  <title>IPv6初探：协议原理与 Web 服务搭建全记录 - M3ng9e</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://example.com/archives/2026/">
+    <meta name="description" content="关于IPv6的一点小探究。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPv6初探：协议原理与 Web 服务搭建全记录">
+<meta property="og:url" content="http://example.com/2026/03/16/IPv6%E5%88%9D%E6%8E%A2%EF%BC%9A%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E4%B8%8E-Web-%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/">
 <meta property="og:site_name" content="M3ng9e">
+<meta property="og:description" content="关于IPv6的一点小探究。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg">
+<meta property="article:published_time" content="2026-03-16T08:21:14.000Z">
+<meta property="article:modified_time" content="2026-03-16T09:24:19.258Z">
 <meta property="article:author" content="M3ng9e">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg">
@@ -46,12 +50,12 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"http://example.com","author":{"@type":"Person","name":"M3ng9e","sameAs":[],"image":"https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg"},"name":"M3ng9e","description":"","url":"http://example.com"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"M3ng9e","sameAs":[],"image":"https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg"},"dateCreated":"2026-03-16T16:21:14+08:00","dateModified":"2026-03-16T17:24:19+08:00","datePublished":"2026-03-16T16:21:14+08:00","description":"","headline":"IPv6初探：协议原理与 Web 服务搭建全记录","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2026/03/16/IPv6%E5%88%9D%E6%8E%A2%EF%BC%9A%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E4%B8%8E-Web-%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/"},"publisher":{"@type":"Organization","name":"M3ng9e","sameAs":[],"image":"https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg","logo":{"@type":"ImageObject","url":"https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg"}},"url":"http://example.com/2026/03/16/IPv6%E5%88%9D%E6%8E%A2%EF%BC%9A%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E4%B8%8E-Web-%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/","thumbnailUrl":null,"image":[]}</script>
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/xaoxuu/favicon/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/xaoxuu/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/xaoxuu/favicon/favicon-16x16.png"><link rel="manifest" href="/assets/xaoxuu/favicon/site.webmanifest"><link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico"><meta name="theme-color" content="#f8f8f8"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" />
 </head>
 <body>
 
-<div class="l_body index" id="start" layout="undefined" type="undefined" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">M3ng9e</div><div class="sub normal cap">"山高万仞，只登一步"</div><div class="sub hover cap" style="opacity:0"> "我只控制我能控制的控制" </div></a></div></header>
@@ -63,17 +67,322 @@
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
+
+
 <widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/"><span class="title">车联网安全基础：NFC中继攻击</span></a><a class="item title" href="/2026/03/16/IPv6%E5%88%9D%E6%8E%A2%EF%BC%9A%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E4%B8%8E-Web-%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/"><span class="title">IPv6初探：协议原理与 Web 服务搭建全记录</span></a><a class="item title" href="/2026/03/16/BLE-%E8%93%9D%E7%89%99%E5%8D%8F%E8%AE%AE%EF%BC%9A%E6%8A%93%E5%8C%85%E5%AE%9E%E6%88%98-HCI-%E7%A9%BA%E5%8F%A3/"><span class="title">BLE 蓝牙协议：抓包实战 (HCI + 空口)</span></a><a class="item title" href="/2026/03/16/Blog%E6%90%AD%E5%BB%BA%EF%BC%88github-Hexo-Stellar-Cloudflare-R2-PicGo%EF%BC%89/"><span class="title">Blog搭建（github+Hexo+Stellar+Cloudflare R2+PicGo）</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/%E6%85%8E%E5%B9%B3.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">M3ng9e</div><div class="sub normal cap">"山高万仞，只登一步"</div><div class="sub hover cap" style="opacity:0"> "我只控制我能控制的控制" </div></a></div></header>
-
- 
 
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">近期发布</a><a class="active" href="/archives/">归档</a></nav></div></div></div><div class="post-list archives"><article class="" id="archive"><div class='archive-header h4'>2026</div><div class="archive-list"><a class='post fs14' href="/2026/03/16/BLE-%E8%93%9D%E7%89%99%E5%8D%8F%E8%AE%AE%EF%BC%9A%E6%8A%93%E5%8C%85%E5%AE%9E%E6%88%98-HCI-%E7%A9%BA%E5%8F%A3/"><time>03-16</time><span>BLE 蓝牙协议：抓包实战 (HCI + 空口)</span></a></div><div class="archive-list"><a class='post fs14' href="/2026/03/16/IPv6%E5%88%9D%E6%8E%A2%EF%BC%9A%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E4%B8%8E-Web-%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/"><time>03-16</time><span>IPv6初探：协议原理与 Web 服务搭建全记录</span></a></div><div class="archive-list"><a class='post fs14' href="/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/"><time>03-16</time><span>车联网安全基础：NFC中继攻击</span></a></div><div class="archive-list"><a class='post fs14' href="/2026/03/16/Blog%E6%90%AD%E5%BB%BA%EF%BC%88github-Hexo-Stellar-Cloudflare-R2-PicGo%EF%BC%89/"><time>03-16</time><span>Blog搭建（github+Hexo+Stellar+Cloudflare R2+PicGo）</span></a></div></article></div>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-03-16T08:21:14.000Z">2026-03-16</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-03-16T09:24:19.258Z">2026-03-16</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>IPv6初探：协议原理与 Web 服务搭建全记录</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>近日，我有幸接手了人生中第一个 IoT 设备安全测试项目——一款智能摄像头，这次的难点在于需要聚焦 <strong>IPv6 暴露面</strong> 下的安全评估和漏洞挖掘。</p>
+<p>作为一个 IoT 安全新手，复杂的环境搭建以及如何触发 IPv6 下的 P2P 通信，让我花费了很多时间。但其实测试的本质逻辑未变：IPv6 只是通道。</p>
+<p><strong>本文作为系列首篇，将重点记录我对 IPv6 的协议原理探究与学习心得。</strong></p>
+<h1 id="IPv6的学习探究"><a href="#IPv6的学习探究" class="headerlink" title="IPv6的学习探究"></a><strong>IPv6的学习探究</strong></h1><h2 id="IPv6-产生的动机"><a href="#IPv6-产生的动机" class="headerlink" title="IPv6 产生的动机"></a><strong>IPv6 产生的动机</strong></h2><h4 id="核心动机：地址不够用了"><a href="#核心动机：地址不够用了" class="headerlink" title="核心动机：地址不够用了"></a><strong>核心动机：地址不够用了</strong></h4><p>IPv4协议32bit的地址空间已经被用完啦，IPv4理论上最多只有约 43 亿 （2^{32}）个IP地址。</p>
+<p>而IPv5协议是一个实验室研究的协议，研究发现设计的有些问题，最终被废弃掉了。</p>
+<p>后边研究了IPv6协议，地址从IPv4的32位，变成了128位，2^{128}个地址，彻底解决了地址短缺问题。</p>
+<h4 id="进阶动机：为了更快、更强（了解即可）"><a href="#进阶动机：为了更快、更强（了解即可）" class="headerlink" title="进阶动机：为了更快、更强（了解即可）"></a><strong>进阶动机：为了更快、更强（了解即可）</strong></h4><p>除了地址不够，IPv4 在设计上也有一些年代久远的“包袱”。IPv6 借机优化了头部格式，目的是<strong>加速处理&#x2F;转发</strong>和<strong>提升服务质量 (QoS)</strong>。</p>
+<ul>
+<li><strong>头部 Checksum (校验和) 的移除：</strong><ul>
+<li><strong>IPv4:</strong> 每个路由器收到数据包，都要算一下校验和，看看数据有没有坏。如果坏了就丢弃。而且因为 TTL 变了，校验和每次都要重算，非常耗时。</li>
+<li><strong>IPv6:直接取消了头部校验和</strong>。设计者认为现在的链路（光纤等）错误率很低，且上层协议（TCP&#x2F;UDP）已经有校验了。<strong>路由器不再计算校验和，处理速度大大加快。</strong></li>
+</ul>
+</li>
+<li><strong>分片 (Fragmentation) 机制的改变：</strong><ul>
+<li><strong>IPv4:</strong> 如果一个数据包太大，路由器有义务把它切碎（分片）再转发。这对路由器来说负担很重。</li>
+<li>**IPv6:**路由器不再负责分片。如果包太大，路由器直接丢弃并通知发送端：“包太大，请你自己切好再发”。这大大减轻了中间路由器的压力。</li>
+</ul>
+</li>
+<li><strong>TTL-1 (Time To Live &#x2F; Hop Limit):</strong><ul>
+<li>这是防止数据包在网络中无限循环的机制。每经过一个路由器，这个值就要减 1。</li>
+<li>在 IPv6 中，由于不需要重新计算 Checksum，这个“减 1”的操作变得非常快。</li>
+</ul>
+</li>
+<li><strong>帮助 QoS (服务质量)：</strong><ul>
+<li>IPv6 头部引入了<strong>Flow Label (流标签)</strong>。这让路由器能识别出哪些包属于同一个“流”（比如一个视频会议的实时数据流），从而优先处理这些对延迟敏感的数据，保证网络质量。</li>
+</ul>
+</li>
+</ul>
+<h2 id="IPv6-数据报格式-Datagram-Format"><a href="#IPv6-数据报格式-Datagram-Format" class="headerlink" title="IPv6 数据报格式 (Datagram Format)"></a><strong>IPv6 数据报格式 (Datagram Format)</strong></h2><p>基于上述的优化动机，IPv6 确定了新的格式规则：</p>
+<p><strong>固定的 40 字节头部：</strong></p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640.png" alt="image-20260213181916250"></p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-133.png" alt="image-20260213183522146"></p>
+<ul>
+<li><p>ver是版本的意思，一个字节，可以看到是6。</p>
+</li>
+<li><p>pri是优先级的意思，但是在wireshark叫 <strong><code>Traffic Class</code></strong> (流量类别)，这里是0x00，没有要求路由器给它开 VIP 通道（比如插队优先转发）。一般普通上网流量都是 0。</p>
+</li>
+<li><p>flow label是流标签的意思，这里是第 0xc8f12号数据流。</p>
+</li>
+<li><p>Payload Length是载荷长度，这里是20，意味着 IPv6 头部后面紧跟的数据只有 20 字节，因为这是一个ACK包</p>
+</li>
+<li><p>Next Header是下一个头部的意思，标识上层协议是什么，图中表示的是TCP(6)。</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>十进制值</strong></th>
+<th align="left"><strong>十六进制 (Hex)</strong></th>
+<th align="left"><strong>含义 (协议&#x2F;扩展头)</strong></th>
+<th align="left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>6</strong></td>
+<td align="left"><code>0x06</code></td>
+<td align="left"><strong>TCP</strong></td>
+<td align="left">传输层协议</td>
+</tr>
+<tr>
+<td align="left"><strong>17</strong></td>
+<td align="left"><code>0x11</code></td>
+<td align="left"><strong>UDP</strong></td>
+<td align="left">传输层协议</td>
+</tr>
+<tr>
+<td align="left"><strong>58</strong></td>
+<td align="left"><code>0x3a</code></td>
+<td align="left"><strong>ICMPv6</strong></td>
+<td align="left">IPv6 的 Ping、邻居发现、报错</td>
+</tr>
+<tr>
+<td align="left"><strong>0</strong></td>
+<td align="left"><code>0x00</code></td>
+<td align="left"><strong>Hop-by-Hop</strong></td>
+<td align="left">逐跳选项头 (每个路由器都要处理的)</td>
+</tr>
+<tr>
+<td align="left"><strong>43</strong></td>
+<td align="left"><code>0x2b</code></td>
+<td align="left"><strong>Routing</strong></td>
+<td align="left">路由头 (指定数据包走的路径)</td>
+</tr>
+<tr>
+<td align="left"><strong>44</strong></td>
+<td align="left"><code>0x2c</code></td>
+<td align="left"><strong>Fragment</strong></td>
+<td align="left">分片头 (还记得吗？中间路由器不分片，源端分片就用这个头)</td>
+</tr>
+<tr>
+<td align="left"><strong>59</strong></td>
+<td align="left"><code>0x3b</code></td>
+<td align="left"><strong>No Next Header</strong></td>
+<td align="left">后面没有头部了 (通常用于测试或空包)</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Hop Limit 是跳数限制的意思，和IPv4的TTL是一样的。</p>
+</li>
+<li><p>IPv4 的头部长度是可变的（20~60字节），路由器处理起来比较麻烦，需要去“猜”头在哪里结束。</p>
+</li>
+<li><p>IPv6 强制头部固定为 <strong>40 字节</strong>。这让硬件处理变得极其简单高效，因为机器可以预知每个字段的确切位置。</p>
+</li>
+</ul>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-134.png" alt="image-20260213181633846"></p>
+<ul>
+<li><p><strong>传输过程中不允许分片：</strong></p>
+<ul>
+<li><p>中间路径上的路由器（Routers）绝对不会去处理分片工作，而是通过路由器生成一个 <strong>ICMPv6 (Type 2, Packet Too Big)</strong> 消息，发回给<strong>数据的发送者（源端）</strong>，以此保证数据高速通过。</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-135.png" alt="image-20260213185020448"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="IPv6-地址书写格式"><a href="#IPv6-地址书写格式" class="headerlink" title="IPv6 地址书写格式"></a><strong>IPv6 地址书写格式</strong></h2><p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-136.png" alt="image-20260213174329437"></p>
+<p>128位的IPv6地址被分为8组，每组的16位用4个十六进制字符（0～9，A～F）来表示，组和组之间用冒号（:）隔开。</p>
+<p>每组中的前导“0”都可以省略，2001:db8:130F:0000:0000:09C0:876A:130B–&gt;2001:db8:130F:0:0:9C0:876A:130B</p>
+<p>连续两个或多个均为0的组，可以用双冒号“::”来代替，2001:db8:130F:0:0:9C0:876A:130B–&gt;2001:db8:130F::9C0:876A:130B</p>
+<h2 id="IPv6-地址结构"><a href="#IPv6-地址结构" class="headerlink" title="IPv6 地址结构"></a><strong>IPv6 地址结构</strong></h2><p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-137.png" alt="image-20260213190808597"></p>
+<p>一般来说IPv6 分为<code>网络前缀 (Network Prefix)+接口标识 (Interface ID)</code>，都是64bit。</p>
+<p>Network Prefix又可以划分为</p>
+<ul>
+<li><strong>前 48 位 (Global Routing Prefix)：</strong> 比如 <code>2409:8c54:0870</code>。这是运营商分给你家光猫的大网段。</li>
+<li><strong>中间 16 位 (Subnet ID)：</strong> 比如 <code>0002</code>。这是你自己家路由器分的“子网”。你可以在家划分出 2^{16}&#x3D;65536 个子网（比如客厅网、客房网），非常富裕。</li>
+</ul>
+<h2 id="IPv6-地址类型"><a href="#IPv6-地址类型" class="headerlink" title="IPv6 地址类型"></a><strong>IPv6 地址类型</strong></h2><table>
+<thead>
+<tr>
+<th align="left"><strong>类型</strong></th>
+<th align="left"><strong>前缀 (Prefix)</strong></th>
+<th align="left"><strong>样子 (示例)</strong></th>
+<th align="left"><strong>对应 IPv4 概念</strong></th>
+<th align="left"><strong>能否上外网？</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>全球单播 (GUA)</strong></td>
+<td align="left"><code>2000::/3</code></td>
+<td align="left"><code>2409:8c54...</code></td>
+<td align="left">公网 IP (<code>8.8.8.8</code>)</td>
+<td align="left"><strong>能</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>唯一本地 (ULA)</strong></td>
+<td align="left"><code>fd00::/8</code></td>
+<td align="left"><code>fd12:3456...</code></td>
+<td align="left">私网 IP (<code>192.168.1.x</code>)</td>
+<td align="left"><strong>不能</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>链路本地 (LLA)</strong></td>
+<td align="left"><code>fe80::/10</code></td>
+<td align="left"><code>fe80::1a2b...</code></td>
+<td align="left">APIPA (<code>169.254.x.x</code>)</td>
+<td align="left"><strong>不能</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>回环地址</strong></td>
+<td align="left"><code>::1/128</code></td>
+<td align="left"><code>::1</code></td>
+<td align="left">Localhost (<code>127.0.0.1</code>)</td>
+<td align="left">本机自嗨</td>
+</tr>
+</tbody></table>
+<h2 id="IPv6和IPv4怎么通信？大家都在用IPv4，如何慢慢升级为IPv6？"><a href="#IPv6和IPv4怎么通信？大家都在用IPv4，如何慢慢升级为IPv6？" class="headerlink" title="IPv6和IPv4怎么通信？大家都在用IPv4，如何慢慢升级为IPv6？"></a><strong>IPv6和IPv4怎么通信？大家都在用IPv4，如何慢慢升级为IPv6？</strong></h2><p>这些问题我推荐看B站中科大郑烇老师讲的，5分钟，用一个例子讲的特别明白，太妙了。</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JV411t7ow?spm_id_from=333.788.videopod.episodes&vd_source=ade4be45ef14d1451786aaf8cff87aa6&p=32%EF%BC%881h42min%E5%BC%80%E5%A7%8B%E8%AE%B2IPv6%EF%BC%89">https://www.bilibili.com/video/BV1JV411t7ow?spm_id_from=333.788.videopod.episodes&amp;vd_source=ade4be45ef14d1451786aaf8cff87aa6&amp;p=32（1h42min开始讲IPv6）</a></p>
+<p><strong>简单点说，IPv6目前是少数，所以如果通信转发的时候，会将IPv6封装在IPv4里传输，当IPv6多起来，以后IPv4借助IPv4的封装传输，直到最后都升级成了IPv6。这个叫平滑升级。</strong></p>
+<h2 id="IPv6的获取方式"><a href="#IPv6的获取方式" class="headerlink" title="IPv6的获取方式"></a><strong>IPv6的获取方式</strong></h2><ol>
+<li><p>SLAAC (Stateless Address Autoconfiguration)</p>
+<p>路由器只负责把网络前缀 Prefix给出来，具体的接口 ID自己设置，也就是对应静态配置。</p>
+<p><strong>过程：</strong></p>
+<ol>
+<li><strong>RS (Router Solicitation):</strong> 电脑刚开机，不知道谁是老大，于是发一个广播：“网关你在哪？”</li>
+<li><strong>RA (Router Advertisement):</strong> 路由器听到后，回复：“我是网关，这是我们的网络前缀（比如 <code>2409:8c54::/64</code>），剩下的你自己看着办。”</li>
+<li><strong>自造 IP：</strong> 电脑拿到前缀，自己生成后 64 位（用 MAC 地址算，或者随机生成），拼在一起，就是一个完整的 IPv6 地址。</li>
+<li><strong>查重 (DAD):</strong> 电脑最后会问一声：“这地址有人用吗？”没人吭声，它就正式启用了。</li>
+</ol>
+</li>
+<li><p>DHCPv6 (Stateful)</p>
+<p>和DHCPv4一样，电脑必须找 DHCPv6 服务器申请，服务器记录在案，分配一个固定的 IP 给你。</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-138.png" alt="image-20260213204710157"></p>
+</li>
+<li><p>Stateless DHCPv6 —— 混合模式</p>
+<p>这是目前最主流的家用模式。</p>
+<ul>
+<li><strong>IP 地址：</strong> 用 SLAAC 自动生成（快）。</li>
+<li><strong>DNS 服务器：</strong> 用 DHCPv6 获取（因为 RA 广播里以前不能带 DNS 信息）。</li>
+</ul>
+</li>
+</ol>
+<h2 id="IPv6的底层通信-NDP"><a href="#IPv6的底层通信-NDP" class="headerlink" title="IPv6的底层通信 (NDP)"></a><strong>IPv6的底层通信 (NDP)</strong></h2><p>在 IPv6 里，ARP 死了，被 NDP (Neighbor Discovery Protocol) 取代了。</p>
+<p>NDP 基于 ICMPv6，它非常强大，依靠 <strong>5 种报文</strong> 搞定了一切：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>报文类型</strong></th>
+<th align="left"><strong>名字</strong></th>
+<th align="left"><strong>作用 (通俗解释)</strong></th>
+<th align="left"><strong>对应 IPv4</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>RS</strong> (Type 133)</td>
+<td align="left">路由器请求</td>
+<td align="left">“网关大哥你在哪？”</td>
+<td align="left">DHCP Discover</td>
+</tr>
+<tr>
+<td align="left"><strong>RA</strong> (Type 134)</td>
+<td align="left">路由器通告</td>
+<td align="left">“我是网关，前缀是这个…”</td>
+<td align="left">(无)</td>
+</tr>
+<tr>
+<td align="left"><strong>NS</strong> (Type 135)</td>
+<td align="left">邻居请求</td>
+<td align="left">“谁是 <code>2409::1</code>？请把 MAC 地址告诉我！”</td>
+<td align="left"><strong>ARP Request</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>NA</strong> (Type 136)</td>
+<td align="left">邻居通告</td>
+<td align="left">“我是 <code>2409::1</code>，我的 MAC 是 xx:xx…”</td>
+<td align="left"><strong>ARP Reply</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Redirect</strong> (Type 137)</td>
+<td align="left">重定向</td>
+<td align="left">“别走我这儿，走那个路由更快。”</td>
+<td align="left">ICMP Redirect</td>
+</tr>
+</tbody></table>
+<h2 id="IPv6的DNS"><a href="#IPv6的DNS" class="headerlink" title="IPv6的DNS"></a><strong>IPv6的DNS</strong></h2><p>在 IPv4 里，查域名的记录叫 <strong>A 记录</strong>。</p>
+<p>在 IPv6 里，查 IP 地址的记录叫 <strong>AAAA 记录</strong>（因为 128 位是 32 位的 4 倍，所以叫 4 个 A）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nslookup -qt=AAAA www.google.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-139.png" alt="image-20260213193254741"></p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-140.png" alt="image-20260213193157988"></p>
+<h1 id="使用IPv6将本机作为Web服务器的探究"><a href="#使用IPv6将本机作为Web服务器的探究" class="headerlink" title="使用IPv6将本机作为Web服务器的探究"></a><strong>使用IPv6将本机作为Web服务器的探究</strong></h1><h2 id="申请IPv6地址"><a href="#申请IPv6地址" class="headerlink" title="申请IPv6地址"></a><strong>申请IPv6地址</strong></h2><p>首先我连接了一个可以分配ipv6的光猫（路由器手机热点都可以，主要能获取IPv6地址），于是我就具有了ipv6地址。</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-141.png" alt="image-20260129142128086"></p>
+<h2 id="打通网络"><a href="#打通网络" class="headerlink" title="打通网络"></a><strong>打通网络</strong></h2><p>这个时候我的设备1还没有暴露在公网，是因为具有防火墙的限制。</p>
+<p>现在尝试关闭防火墙让其暴露在公网（最好是在防火墙里设置只允许某些服务通过，我这里是做实验图简单）。</p>
+<ol>
+<li>打开控制面板\系统和安全\Windows Defender 防火墙</li>
+<li>直接关闭防火墙或者打开ipv6的通信</li>
+<li>并且我使用phpstudy搭建了一个web服务</li>
+</ol>
+<p>然后我使用了另外一个设备2（使用手机sim卡数据流量开热点，这样就可以具有不同网络下的ipv6地址了）进行尝试ping，nmap扫描，以及访问web服务，可以看到ping，端口扫描都是可以看得到的，但是web服务访问不到。</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-142.png" alt="image-20260129144326982"></p>
+<p>nmap需要加<code>-6</code></p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-143.png" alt="image-20260129144331504"></p>
+<p>可以看到我的电脑开放了很多端口，所以如果每个iot设备直接放在外网，风险还是挺大的。</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-144.png" alt="image-20260129144337476"></p>
+<h2 id="测试web服务连通"><a href="#测试web服务连通" class="headerlink" title="测试web服务连通"></a><strong>测试web服务连通</strong></h2><p>设备1通过phpstudy开启了web服务，我自己通过ipv6地址访问是可以访问到的。http:&#x2F;&#x2F;[2408:8256:5087:4e40:adfe:c1c:be20:37d0]&#x2F;</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-145.png" alt="image-20260129144704469"><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038579-146.png" alt="image-20260129154518493"></p>
+<p>但是我尝试用设备2（不同网络的主机）访问，却访问不了。</p>
+<p>避坑：问了一下AI，说是运营商给禁掉了，尝试给apache增加监听端口9001，修改中间件的配置文件，增加监听 <code>Listen 9001</code></p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038580-147.png" alt="image-20260129152558471"></p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038580-148.png" alt="image-20260129153119117"></p>
+<p>再次用设备2（也可以是手机，主要具有ipv6地址）尝试访问，发现可以访问了。</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038580-149.png" alt="image-20260129154759239"></p>
+<p>让我朋友去访问一下，也是可以的。</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038580-150.png" alt="image-20260129155425367"></p>
+<p>PS：手机APN接入点名称可以设置只支持ipv6通信，新建一个APN，参数和你的默认的APN配置一致，APN让其只支持ipv6就可以了。如下图。</p>
+<p>但是具体手机sim卡运营商设置不一样，我的手机是只有IPv6地址，而同事的设置IPv6后还是具有IPv4地址的，可以访问一些网站进行查看，比如<a target="_blank" rel="noopener" href="https://ipw.cn/%E3%80%82">https://ipw.cn/。</a></p>
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/640-1770988038580-151.png" alt="image-20260213192614437" style="zoom: 25%;" />
+
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260213210942719.png" alt="image-20260213210942719" style="zoom:25%;" />
+
+
+
+<p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/IPv6.html">https://info.support.huawei.com/info-finder/encyclopedia/zh/IPv6.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JV411t7ow?spm_id_from=333.788.videopod.episodes&vd_source=ade4be45ef14d1451786aaf8cff87aa6&p=32">https://www.bilibili.com/video/BV1JV411t7ow?spm_id_from=333.788.videopod.episodes&amp;vd_source=ade4be45ef14d1451786aaf8cff87aa6&amp;p=32</a></p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2026/03/16/BLE-%E8%93%9D%E7%89%99%E5%8D%8F%E8%AE%AE%EF%BC%9A%E6%8A%93%E5%8C%85%E5%AE%9E%E6%88%98-HCI-%E7%A9%BA%E5%8F%A3/">BLE 蓝牙协议：抓包实战 (HCI + 空口)</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/">车联网安全基础：NFC中继攻击</a></div></section></div>
+
+
+
+
+
+
 <footer class="page-footer footnote"><hr><div class="text"><center>
   "追风赶月莫停留，平芜尽处是春山"
   <br>
@@ -103,7 +412,12 @@ show_runtime();
 <center>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IPv6%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8E%A2%E7%A9%B6"><span class="toc-text">IPv6的学习探究</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6-%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8A%A8%E6%9C%BA"><span class="toc-text">IPv6 产生的动机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%A8%E6%9C%BA%EF%BC%9A%E5%9C%B0%E5%9D%80%E4%B8%8D%E5%A4%9F%E7%94%A8%E4%BA%86"><span class="toc-text">核心动机：地址不够用了</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E5%8A%A8%E6%9C%BA%EF%BC%9A%E4%B8%BA%E4%BA%86%E6%9B%B4%E5%BF%AB%E3%80%81%E6%9B%B4%E5%BC%BA%EF%BC%88%E4%BA%86%E8%A7%A3%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="toc-text">进阶动机：为了更快、更强（了解即可）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6-%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F-Datagram-Format"><span class="toc-text">IPv6 数据报格式 (Datagram Format)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6-%E5%9C%B0%E5%9D%80%E4%B9%A6%E5%86%99%E6%A0%BC%E5%BC%8F"><span class="toc-text">IPv6 地址书写格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6-%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84"><span class="toc-text">IPv6 地址结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6-%E5%9C%B0%E5%9D%80%E7%B1%BB%E5%9E%8B"><span class="toc-text">IPv6 地址类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6%E5%92%8CIPv4%E6%80%8E%E4%B9%88%E9%80%9A%E4%BF%A1%EF%BC%9F%E5%A4%A7%E5%AE%B6%E9%83%BD%E5%9C%A8%E7%94%A8IPv4%EF%BC%8C%E5%A6%82%E4%BD%95%E6%85%A2%E6%85%A2%E5%8D%87%E7%BA%A7%E4%B8%BAIPv6%EF%BC%9F"><span class="toc-text">IPv6和IPv4怎么通信？大家都在用IPv4，如何慢慢升级为IPv6？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6%E7%9A%84%E8%8E%B7%E5%8F%96%E6%96%B9%E5%BC%8F"><span class="toc-text">IPv6的获取方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6%E7%9A%84%E5%BA%95%E5%B1%82%E9%80%9A%E4%BF%A1-NDP"><span class="toc-text">IPv6的底层通信 (NDP)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6%E7%9A%84DNS"><span class="toc-text">IPv6的DNS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8IPv6%E5%B0%86%E6%9C%AC%E6%9C%BA%E4%BD%9C%E4%B8%BAWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%8E%A2%E7%A9%B6"><span class="toc-text">使用IPv6将本机作为Web服务器的探究</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7IPv6%E5%9C%B0%E5%9D%80"><span class="toc-text">申请IPv6地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E9%80%9A%E7%BD%91%E7%BB%9C"><span class="toc-text">打通网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95web%E6%9C%8D%E5%8A%A1%E8%BF%9E%E9%80%9A"><span class="toc-text">测试web服务连通</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
