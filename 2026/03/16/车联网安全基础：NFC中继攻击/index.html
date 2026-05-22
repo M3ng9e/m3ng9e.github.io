@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="NFC中继测试的相关知识~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="车联网安全基础：NFC中继攻击">
+<meta property="og:url" content="http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/index.html">
+<meta property="og:site_name" content="M3ng9e">
+<meta property="og:description" content="NFC中继测试的相关知识~">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126225340334.png">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126225758593.png">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126234653767.png">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126234904717.png">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126234913221.png">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126235853431.png">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260127000911675.png">
+<meta property="article:published_time" content="2026-03-16T08:19:38.000Z">
+<meta property="article:modified_time" content="2026-03-16T09:25:08.000Z">
+<meta property="article:author" content="M3ng9e">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126225340334.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>车联网安全基础：NFC中继攻击</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://www.yuque.com/m3ng9e">wiki</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2026/03/16/IPv6%E5%88%9D%E6%8E%A2%EF%BC%9A%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E4%B8%8E-Web-%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%85%A8%E8%AE%B0%E5%BD%95/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&text=车联网安全基础：NFC中继攻击"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&title=车联网安全基础：NFC中继攻击"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&is_video=false&description=车联网安全基础：NFC中继攻击"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=车联网安全基础：NFC中继攻击&body=Check out this article: http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&title=车联网安全基础：NFC中继攻击"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&title=车联网安全基础：NFC中继攻击"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&title=车联网安全基础：NFC中继攻击"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&title=车联网安全基础：NFC中继攻击"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&name=车联网安全基础：NFC中继攻击&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&t=车联网安全基础：NFC中继攻击"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB"><span class="toc-number">1.</span> <span class="toc-text">NFC中继攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3NFC"><span class="toc-number">1.1.</span> <span class="toc-text">了解NFC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC%E7%9A%84%E4%BA%A4%E4%BA%92%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.</span> <span class="toc-text">NFC的交互逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB-1"><span class="toc-number">1.3.</span> <span class="toc-text">NFC中继攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.4.</span> <span class="toc-text">NFC中继攻击实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%98%B2%E5%BE%A1NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB"><span class="toc-number">1.5.</span> <span class="toc-text">如何防御NFC中继攻击</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        <header id="header">
+  <a class="u-url u-uid" href="/">
+  
+    
+      <img id="logo" alt class="u-logo" src="/images/logo.png" />
+    
+  
+    <div id="title">
+      <h1 class="p-name">M3ng9e</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-2x"></i></a>
+      </li>
+      <!--
+     --><li><a href="/">Home</a></li><!--
+   --><!--
+     --><li><a href="/archives/">Writing</a></li><!--
+   --><!--
+     --><li><a target="_blank" rel="noopener" href="https://www.yuque.com/m3ng9e">wiki</a></li><!--
+   --><!--
+     --><li><a href="/about/">About</a></li><!--
+   -->
+    </ul>
+  </div>
+</header>
+
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        车联网安全基础：NFC中继攻击
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">M3ng9e</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-03-16T08:19:38.000Z" class="dt-published" itemprop="datePublished">2026-03-16</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p><strong>免责声明：</strong> 本文仅用于技术交流与安全研究，文中涉及的漏洞复现均在授权环境下进行。请勿利用文中技术进行非法活动，否则后果自负。</p>
+<p>上个月，我有幸参与了某大厂未上市车型的车联网安全项目。在测试过程中，我们通过中继攻击（Relay Attack）成功解锁了车辆。当时虽然复现了漏洞并记录了状态码，但对于底层的交互逻辑、请求响应（APDU）的具体细节理解尚浅。为了知其然更知其所以然，本文特此对NFC通信逻辑在数字钥匙场景下的应用进行复盘和补全。</p>
+<h1 id="NFC中继攻击"><a href="#NFC中继攻击" class="headerlink" title="NFC中继攻击"></a>NFC中继攻击</h1><h2 id="了解NFC"><a href="#了解NFC" class="headerlink" title="了解NFC"></a>了解NFC</h2><p>NFC（Near Field Communication）不仅仅是支付工具（公交卡、银行卡、碰一碰支付等等。），更是目前车联网数字钥匙（Digital Key）的主流实现方案之一。</p>
+<p>目前的车机方案（如特斯拉、比亚迪等）主要遵循 <strong>CCC（Car Connectivity Consortium）</strong> 规范。与传统的门禁卡不同，车规级的NFC通信绝不是简单的 UID（唯一标识符）匹配，其中会包含权限验证的过程。</p>
+<p>NFC（Near Field Communication）是一种基于 RFID（13.56MHz）演变而来的近场通信技术，通信距离一般小于20CM（实际4CM），有三种工作模式：</p>
+<ol>
+<li><strong>卡模拟模式（Tag&#x2F;Card Emulation）：</strong> 卡片端，用户的手机或NFC卡片。</li>
+<li><strong>读卡器模式（Reader&#x2F;Writer）：</strong> 读卡器端， 车辆主动发射射频场（RF Field），寻找并供电给附近的手机&#x2F;卡片，发送指令（Command）并接收响应（Response）。</li>
+<li><strong>点对点模式（P2P）：</strong> 两个 NFC 设备交换数据。</li>
+</ol>
+<h2 id="NFC的交互逻辑"><a href="#NFC的交互逻辑" class="headerlink" title="NFC的交互逻辑"></a>NFC的交互逻辑</h2><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126225340334.png" alt="image-20260126225340334"  />
+
+<h2 id="NFC中继攻击-1"><a href="#NFC中继攻击-1" class="headerlink" title="NFC中继攻击"></a>NFC中继攻击</h2><p>了解了NFC的通信交互逻辑后，我们来了解一下中继攻击是什么？</p>
+<p>维基百科：中继（Relay）是一种在两个网络节点、设备或交换中心之间转发、增强信号或数据的通信技术。</p>
+<p>我们可以简单理解为中继就是接力，接力转发放大信号。</p>
+<p>如何接力呢？如图所示。</p>
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126225758593.png" alt="image-20260126225758593" style="zoom:67%;" />
+
+<p>本来的流程中，是<strong>tag1&lt;-&gt;reader1</strong>两个人近距离交流，现在需要远距离传话，因此额外需要两个人。</p>
+<p><strong>tag1</strong>&lt;–&gt;reader2&lt;–&gt;tag2&lt;–&gt;<strong>reader1</strong>，增加了一个reader2和tag2，由于通信传输需要保证信息传输的可靠稳定，我们又叫了一个哥们，他是大喇叭联络员，他一手拉着 <code>Reader2</code>，一手拉着 <code>Tag2</code>，于是链路就变成了这样<strong>tag1</strong> &lt;–&gt; reader2 &lt;–&gt; [服务器] &lt;–&gt; tag2 &lt;–&gt; <strong>reader1</strong>，这样就能保证信息顺畅的传输了。</p>
+<p>中继攻击的重点就是把短距离通信变成了长距离通信，扩大了通讯范围，甚至扩大到全球。</p>
+<p>设想一下这样的场景：</p>
+<p>你在饭店吃饭，手机放桌上了，车停在外面。这时有两个攻击者，一个靠近车的NFC，一个靠近你的手机，并搭建了服务器，在1-2秒内就可以完成打开你的车门，把你的车开走了，可以一直把车开到熄火为止。</p>
+<h2 id="NFC中继攻击实践"><a href="#NFC中继攻击实践" class="headerlink" title="NFC中继攻击实践"></a>NFC中继攻击实践</h2><p>准备：两台安装NFCgate的手机（需要xposed）、一台电脑（服务器）</p>
+<p>APP下载地址：<a target="_blank" rel="noopener" href="https://github.com/nfcgate/nfcgate">https://github.com/nfcgate/nfcgate</a></p>
+<p>服务端下载地址：<a target="_blank" rel="noopener" href="https://github.com/nfcgate/server">https://github.com/nfcgate/server</a></p>
+<ol>
+<li><p>电脑开启热点，两台手机连上热点，然后在电脑上开启server.py</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126234653767.png" alt="image-20260126234653767"></p>
+</li>
+<li><p>两台手机都在settings里设置服务器ip和端口</p>
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126234904717.png" alt="image-20260126234904717" style="zoom:50%;" />
+
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126234913221.png" alt="image-20260126234913221" style="zoom:50%;" />
+</li>
+<li><p>回到主页面，找到“Relay Mode”功能，一台设置为tag，一台设置为reader，连上服务器</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260126235853431.png" alt="image-20260126235853431"></p>
+</li>
+<li><p>先锁车，将reader与手机NFC感应区靠近，将tag与车辆NFC感应区靠近，就会自动发送NFC通信数据进行中继攻击了，如果你的车开锁了，那么恭喜你NFC中继攻击成功了。</p>
+</li>
+<li><p>为了进一步学习原理，我们需要了解其数据交互的大概逻辑，这是ADPU数据交互的过程的示例</p>
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/PicGo/image-20260127000911675.png" alt="image-20260127000911675" style="zoom:50%;" /></li>
+</ol>
+<p>其中我们重点需要知道响应码含义，协议请求头的字段含义，参数等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C-APDU (读卡器发出的指令):</span><br><span class="line">00 A4 04 00 ...  &lt;-- Select File (标准，选择应用)</span><br><span class="line">80 / 84 开头： 行业标准或私有 (Proprietary / GlobalPlatform)</span><br><span class="line"></span><br><span class="line">R-APDU (卡片回复):</span><br><span class="line">6A 82            &lt;-- File Not Found (文件未找到)</span><br><span class="line">90 00            &lt;-- Success (成功)</span><br></pre></td></tr></table></figure>
+
+<p>其他的具体协议数据字节代表的含义大家可以自行查阅资料学习， 重点是根据通讯数据，进而推算交互逻辑进行分析。</p>
+<p><strong>C-APDU</strong>：读卡器端</p>
+<table>
+<thead>
+<tr>
+<th><strong>必须部分 (Header)</strong></th>
+<th></th>
+<th></th>
+<th></th>
+<th><strong>可选部分 (Body)</strong></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CLA</strong></td>
+<td><strong>INS</strong></td>
+<td><strong>P1</strong></td>
+<td><strong>P2</strong></td>
+<td><strong>Lc</strong></td>
+<td><strong>Data</strong></td>
+<td><strong>Le</strong></td>
+</tr>
+<tr>
+<td>类别</td>
+<td>指令</td>
+<td>参数1</td>
+<td>参数2</td>
+<td>数据长度</td>
+<td>数据内容</td>
+<td>期望回复长度</td>
+</tr>
+</tbody></table>
+<p> <strong>R-APDU</strong>：卡片端</p>
+<table>
+<thead>
+<tr>
+<th><strong>可选部分 (Body)</strong></th>
+<th><strong>必须部分 (Trailer)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Data</strong></td>
+<td><strong>SW1 SW2</strong></td>
+</tr>
+<tr>
+<td>实际数据</td>
+<td>状态字 (Status Word)</td>
+</tr>
+</tbody></table>
+<h2 id="如何防御NFC中继攻击"><a href="#如何防御NFC中继攻击" class="headerlink" title="如何防御NFC中继攻击"></a>如何防御NFC中继攻击</h2><p>核心是延时检测，看时间在不在纳秒单位内。</p>
+<ol>
+<li>UWB（超宽带）技术可以有效防御NFC中继攻击。通过其厘米级的高精度定位和基于飞行时间（ToF）的安全时间戳技术，UWB能准确测量设备间的物理距离。即使攻击者在远端中继信号，UWB也会因测量出的传输时延过长而判定为非法操作，从而阻止攻击。</li>
+<li>时序与协议优化，严格的 FWT (Frame Waiting Time) 限制（ &lt; 20ms），禁用 WTX (Waiting Time Extension)： 读卡器拒绝卡片发出的“请求加时”指令，强制要求即时响应。</li>
+<li>多因素认证 (MFA &#x2F; Biometrics)， 即使你偷了我的信号，你没有我的指纹&#x2F;人脸。</li>
+<li>运动传感器 (Motion Sensor)，车钥匙内部装有加速度计。钥匙静止不动超过 X 分钟，钥匙会自动<strong>切断无线发射功能</strong>（休眠），只有当你拿起钥匙走路时，无线发射功能才会被唤醒。</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://www.yuque.com/m3ng9e">wiki</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB"><span class="toc-number">1.</span> <span class="toc-text">NFC中继攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3NFC"><span class="toc-number">1.1.</span> <span class="toc-text">了解NFC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC%E7%9A%84%E4%BA%A4%E4%BA%92%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.</span> <span class="toc-text">NFC的交互逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB-1"><span class="toc-number">1.3.</span> <span class="toc-text">NFC中继攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.4.</span> <span class="toc-text">NFC中继攻击实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%98%B2%E5%BE%A1NFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB"><span class="toc-number">1.5.</span> <span class="toc-text">如何防御NFC中继攻击</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&text=车联网安全基础：NFC中继攻击"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&title=车联网安全基础：NFC中继攻击"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&is_video=false&description=车联网安全基础：NFC中继攻击"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=车联网安全基础：NFC中继攻击&body=Check out this article: http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&title=车联网安全基础：NFC中继攻击"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&title=车联网安全基础：NFC中继攻击"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&title=车联网安全基础：NFC中继攻击"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&title=车联网安全基础：NFC中继攻击"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&name=车联网安全基础：NFC中继攻击&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/03/16/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%EF%BC%9ANFC%E4%B8%AD%E7%BB%A7%E6%94%BB%E5%87%BB/&t=车联网安全基础：NFC中继攻击"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2026
+    M3ng9e
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://www.yuque.com/m3ng9e">wiki</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
