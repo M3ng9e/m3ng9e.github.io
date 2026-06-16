@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南宁三日游 · 我们的旅行日记 | 6.19-6.21</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #fff5f8;
+            color: #4a3040;
+            line-height: 1.8;
+        }
+
+        /* Floating hearts background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M10 18l-1.45-1.32C3.4 12.36 0 9.28 0 5.5 0 2.42 2.42 0 5.5 0 7.24 0 8.91.81 10 2.09 11.09.81 12.76 0 14.5 0 17.58 0 20 2.42 20 5.5c0 3.78-3.4 6.86-8.55 11.18L10 18z' fill='%23ff6b9d' fill-opacity='0.04'/%3E%3C/svg%3E");
+            background-size: 40px 40px;
+        }
+
+        .page { position: relative; z-index: 1; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #ff9ec4 0%, #ffb6d5 30%, #ffd4e5 60%, #ffe0ed 100%);
+            color: #7a2048;
+            padding: 55px 20px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -30px; right: -30px;
+            width: 160px; height: 160px;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -40px; left: -20px;
+            width: 120px; height: 120px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero .hearts {
+            font-size: 1.6em;
+            margin-bottom: 8px;
+            position: relative;
+            letter-spacing: 6px;
+        }
+        .hero h1 {
+            font-size: 2.2em;
+            margin-bottom: 6px;
+            position: relative;
+            letter-spacing: 3px;
+        }
+        .hero .subtitle {
+            font-size: 1.05em;
+            opacity: 0.8;
+            position: relative;
+            margin-bottom: 14px;
+        }
+        .hero .couple-tag {
+            position: relative;
+            display: inline-block;
+            background: rgba(255,255,255,0.45);
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 30px;
+            padding: 6px 22px;
+            font-size: 0.95em;
+            backdrop-filter: blur(4px);
+        }
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+            position: relative;
+        }
+        .badge {
+            background: rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 16px;
+            padding: 4px 14px;
+            font-size: 0.83em;
+        }
+
+        .container { max-width: 860px; margin: 0 auto; padding: 18px; }
+
+        /* Overview */
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 18px 0;
+        }
+        .overview-card {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(255,107,157,0.08);
+            border: 1px solid #ffe0ed;
+        }
+        .overview-card .icon { font-size: 1.7em; margin-bottom: 4px; }
+        .overview-card .label { font-size: 0.78em; color: #c08090; }
+        .overview-card .value { font-size: 1.05em; font-weight: 600; color: #7a2048; }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 26px;
+            margin: 18px 0;
+            box-shadow: 0 2px 14px rgba(255,107,157,0.07);
+            border: 1px solid #ffe8f0;
+        }
+        .card h2 {
+            color: #d4407a;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+        .card .card-sub { color: #c08090; font-size: 0.88em; margin-bottom: 14px; }
+        .card-divider {
+            height: 2px;
+            background: linear-gradient(90deg, #ff9ec4, transparent);
+            margin-bottom: 16px;
+            border: none;
+        }
+
+        /* Train table */
+        .train-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .train-table th {
+            background: linear-gradient(90deg, #ff6b9d, #ff8fb8);
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 0.88em;
+        }
+        .train-table th:first-child { border-radius: 10px 0 0 0; }
+        .train-table th:last-child { border-radius: 0 10px 0 0; }
+        .train-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #fff0f4;
+            font-size: 0.93em;
+        }
+        .train-table tr:hover { background: #fff8fa; }
+        .train-highlight { background: #fff0f6 !important; }
+        .train-highlight td:first-child { font-weight: 700; color: #d4407a; }
+
+        /* Day sections */
+        .day-section {
+            background: white;
+            border-radius: 18px;
+            margin: 22px 0;
+            overflow: hidden;
+            box-shadow: 0 2px 14px rgba(255,107,157,0.07);
+            border: 1px solid #ffe8f0;
+        }
+        .day-header {
+            padding: 16px 26px;
+            color: white;
+            font-size: 1.15em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .day-header .day-num {
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+            padding: 2px 12px;
+            font-size: 0.85em;
+        }
+        .day1 .day-header { background: linear-gradient(90deg, #ff6b9d, #ff8fb8); }
+        .day2 .day-header { background: linear-gradient(90deg, #f5a623, #f7be5a); }
+        .day3 .day-header { background: linear-gradient(90deg, #7ec8e3, #a0d8ef); }
+        .day-content { padding: 22px 26px; }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 28px; }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 6px;
+            bottom: 6px;
+            width: 2.5px;
+            background: linear-gradient(to bottom, #ff9ec4, #f5a623, #7ec8e3);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 18px;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 7px;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 2.5px solid #ff9ec4;
+            border-radius: 50%;
+        }
+        .timeline-item.meal::before { border-color: #ff6b9d; background: #fff0f5; }
+        .timeline-item.sight::before { border-color: #f5a623; background: #fff8ee; }
+        .timeline-item.night::before { border-color: #7ec8e3; background: #f0f8ff; }
+
+        .tl-time {
+            color: #d4407a;
+            font-weight: 600;
+            font-size: 0.88em;
+            letter-spacing: 0.5px;
+        }
+        .tl-title { font-weight: 600; font-size: 1.06em; margin: 3px 0; color: #5a2040; }
+        .tl-desc { color: #8a7080; font-size: 0.92em; }
+        .tl-tip {
+            background: #fff5f8;
+            border-left: 3px solid #ff9ec4;
+            padding: 8px 12px;
+            margin-top: 8px;
+            font-size: 0.87em;
+            border-radius: 0 10px 10px 0;
+            color: #c06080;
+        }
+        .tl-couple {
+            background: #fff0f5;
+            border-left: 3px solid #ff6b9d;
+            padding: 8px 12px;
+            margin-top: 8px;
+            font-size: 0.87em;
+            border-radius: 0 10px 10px 0;
+            color: #d4407a;
+        }
+        .tag-must {
+            display: inline-block;
+            background: #fff0f5;
+            color: #ff6b9d;
+            border-radius: 10px;
+            padding: 1px 8px;
+            font-size: 0.76em;
+            margin-left: 6px;
+            vertical-align: middle;
+            font-weight: 600;
+        }
+        .tag-love {
+            display: inline-block;
+            background: #fff0f5;
+            color: #ff6b9d;
+            border-radius: 10px;
+            padding: 1px 8px;
+            font-size: 0.76em;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        /* Food grid */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .food-card {
+            border: 1px solid #ffe8f0;
+            border-radius: 14px;
+            padding: 14px;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .food-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(255,107,157,0.12); }
+        .food-name { font-weight: 600; font-size: 1.03em; color: #5a2040; }
+        .food-shop { color: #d4407a; font-size: 0.87em; margin-top: 2px; }
+        .food-desc { color: #b09098; font-size: 0.87em; margin-top: 5px; }
+        .food-price { color: #ff6b9d; font-weight: 600; margin-top: 5px; font-size: 0.9em; }
+        .food-tag-when {
+            display: inline-block;
+            background: #fff5f8;
+            color: #d4407a;
+            border-radius: 8px;
+            padding: 1px 7px;
+            font-size: 0.73em;
+            margin-top: 5px;
+        }
+
+        /* Tips */
+        .tip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .tip-card {
+            background: #fff8fa;
+            border-radius: 14px;
+            padding: 15px;
+            border: 1px solid #ffe8f0;
+        }
+        .tip-card h3 { color: #d4407a; font-size: 0.98em; margin-bottom: 7px; }
+        .tip-card ul { padding-left: 16px; color: #8a7080; font-size: 0.88em; }
+        .tip-card li { margin-bottom: 3px; }
+
+        /* Budget */
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .budget-table th {
+            background: #fff5f8;
+            padding: 10px 12px;
+            text-align: left;
+            color: #d4407a;
+            font-size: 0.9em;
+        }
+        .budget-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #fff0f4;
+            font-size: 0.9em;
+        }
+        .budget-table .total-row { background: #fff0f6; }
+        .budget-table .total-row td { font-weight: 700; color: #ff6b9d; border-bottom: none; }
+
+        /* Packing */
+        .packing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+            gap: 9px;
+            margin-top: 12px;
+        }
+        .packing-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: #fff8fa;
+            border-radius: 10px;
+            font-size: 0.9em;
+            border: 1px solid #ffe8f0;
+        }
+        .packing-item input[type="checkbox"] {
+            width: 17px;
+            height: 17px;
+            accent-color: #ff6b9d;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #d4a0b0;
+            font-size: 0.88em;
+        }
+        .footer .heart { color: #ff6b9d; }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.6em; }
+            .container { padding: 10px; }
+            .day-content, .card { padding: 16px; }
+            .overview { grid-template-columns: 1fr; }
+            .food-grid, .tip-grid, .packing-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+<div class="hero">
+    <div class="hearts">&#10084; &#10084; &#10084;</div>
+    <h1>南宁三日游</h1>
+    <p class="subtitle">6.19 Fri — 6.21 Sun · 我们的旅行日记</p>
+    <div class="couple-tag">和你一起，去哪都甜</div>
+    <div class="badges">
+        <span class="badge">广州南出发</span>
+        <span class="badge">老友粉 + 夜市</span>
+        <span class="badge">青秀山</span>
+        <span class="badge">亭子码头</span>
+        <span class="badge">海鲜大餐</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- 行程概览 -->
+    <div class="overview">
+        <div class="overview-card">
+            <div class="icon">&#128197;</div>
+            <div class="label">行程天数</div>
+            <div class="value">3天2晚</div>
+        </div>
+        <div class="overview-card">
+            <div class="icon">&#128107;</div>
+            <div class="label">我们</div>
+            <div class="value">2人同行</div>
+        </div>
+        <div class="overview-card">
+            <div class="icon">&#128644;</div>
+            <div class="label">出发地</div>
+            <div class="value">广州南站</div>
+        </div>
+    </div>
+
+    <!-- 交通 -->
+    <div class="card">
+        <h2>&#128644; 交通 · 广州南 &#8596; 南宁东</h2>
+        <p class="card-sub">高铁约3小时，端午票紧，记得提前抢票哦~</p>
+        <hr class="card-divider">
+        <table class="train-table">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>出发</th>
+                    <th>到达</th>
+                    <th>耗时</th>
+                    <th>二等座/人</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="train-highlight">
+                    <td>6.19 周五</td>
+                    <td>07:56</td>
+                    <td>10:45</td>
+                    <td>2h49m</td>
+                    <td>&#165;169</td>
+                </tr>
+                <tr class="train-highlight">
+                    <td>6.21 周日</td>
+                    <td>19:08</td>
+                    <td>22:40</td>
+                    <td>3h32m</td>
+                    <td>&#165;169</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="tl-tip">
+            &#128161; 南宁东站到市区：地铁约40分钟（人均5元）/ 打车约20分钟（人均10元，两个人打车更划算~）
+        </div>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="day-section day1">
+        <div class="day-header">
+            <span class="day-num">DAY 1</span>
+            6月19日 周五 &#10084; 初见邕城
+        </div>
+        <div class="day-content">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="tl-time">07:56 — 10:45</div>
+                    <div class="tl-title">广州南 → 南宁东</div>
+                    <div class="tl-desc">高铁出发啦~ 车程约3小时，一起听歌、看剧、补觉。</div>
+                    <div class="tl-couple">&#127925; 提前下载好离线内容，准备点小零食路上吃~</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="tl-time">11:00 — 11:30</div>
+                    <div class="tl-title">到站 → 前往酒店</div>
+                    <div class="tl-desc">地铁40分钟（人均5元）或打车20分钟（人均10元）。先到酒店放行李~</div>
+                </div>
+
+                <div class="timeline-item meal">
+                    <div class="tl-time">11:30 — 12:30</div>
+                    <div class="tl-title">午餐：第一碗老友粉！ <span class="tag-must">&#10084; 必吃</span></div>
+                    <div class="tl-desc">
+                        到南宁第一件事！来一碗热腾腾的老友粉：<br><br>
+                        <strong>推荐店铺：</strong><br>
+                        &#8226; <strong>复记老友粉</strong> — 老牌名店，酸笋味正宗<br>
+                        &#8226; <strong>舒记老友粉</strong> — 汤底浓郁，配料足<br><br>
+                        <strong>点法：</strong>汤粉或干捞都行，加猪杂/牛肉，微辣或中辣，再加个卤蛋~
+                    </div>
+                    <div class="tl-tip">&#127836; 到了南宁不吃老友粉等于白来！酸笋+豆豉+辣椒的灵魂组合，一碗就爱上</div>
+                </div>
+
+                <div class="timeline-item sight">
+                    <div class="tl-time">13:00 — 15:30</div>
+                    <div class="tl-title">三街两巷 · 朝阳广场 · 南宁交易场</div>
+                    <div class="tl-desc">
+                        饭后慢逛消食，三个地方很近：<br><br>
+                        <strong>三街两巷</strong> — 老南宁骑楼街区，拍照超出片<br>
+                        <strong>朝阳广场</strong> — 南宁最热闹的商圈<br>
+                        <strong>南宁交易场</strong> — 当地人的市场，烟火气十足
+                    </div>
+                    <div class="tl-couple">&#128247; 三街两巷的骑楼巷子超适合拍合照，随手出片~</div>
+                </div>
+
+                <div class="timeline-item meal">
+                    <div class="tl-time">15:30 — 16:30</div>
+                    <div class="tl-title">下午茶：老盐水 + 巧八角冰浆</div>
+                    <div class="tl-desc">
+                        逛累了歇歇脚：<br>
+                        &#8226; <strong>老盐水</strong> — 推荐青芒味和西瓜味，酸甜咸冰超解暑<br>
+                        &#8226; <strong>巧八角冰浆</strong> — 南宁网红冰品，两个人share一杯
+                    </div>
+                    <div class="tl-tip">&#10052; 老盐水推荐青芒味，最经典！冰浆选芒果或百香果味</div>
+                </div>
+
+                <div class="timeline-item sight">
+                    <div class="tl-time">17:00 — 19:00</div>
+                    <div class="tl-title">亭子码头 看日落 <span class="tag-love">&#10084; 浪漫</span></div>
+                    <div class="tl-desc">
+                        傍晚的亭子码头最美！邕江边的码头广场：<br><br>
+                        &#8226; 沿江步道散步，吹江风看日落<br>
+                        &#8226; 码头广场拍照，华灯初上很出片<br>
+                        &#8226; 周边有市集和小吃摊<br>
+                        &#8226; 远眺邕江两岸夜景<br><br>
+                        <strong>交通：</strong>地铁2号线到亭洪路站，步行约10分钟
+                    </div>
+                    <div class="tl-couple">&#127749; 日落时分超浪漫，两个人沿江边走走，看夕阳慢慢落下~</div>
+                </div>
+
+                <div class="timeline-item night">
+                    <div class="tl-time">19:00 — 21:30</div>
+                    <div class="tl-title">平西夜市 <span class="tag-love">&#10084; 逛吃</span></div>
+                    <div class="tl-desc">
+                        从亭子码头步行就到！南宁本地人爱去的夜市：<br><br>
+                        &#8226; <strong>豆腐花</strong> / 烤豆腐 — 嫩滑或外焦里嫩<br>
+                        &#8226; <strong>芒果花</strong> — 切花造型，好看好吃<br>
+                        &#8226; 各种<strong>烧烤</strong>串串<br>
+                        &#8226; 糖水甜品 / 酸嘢<br>
+                        &#8226; 炒螺 / 烤生蚝<br><br>
+                        两个人每样点一份share，从街头吃到巷尾~
+                    </div>
+                    <div class="tl-couple">&#127856; 亭子码头看日落 → 平西夜市逛吃，第一天的完美收尾</div>
+                </div>
+
+                <div class="timeline-item night">
+                    <div class="tl-time">21:30 — 23:30</div>
+                    <div class="tl-title">宵夜：雄哥宜州果酱烧烤 <span class="tag-must">&#10084; 必吃</span></div>
+                    <div class="tl-desc">
+                        晚上7点就开门了！南宁宵夜的灵魂——宜州果酱烧烤：<br><br>
+                        和普通烧烤不一样，宜州烧烤刷的是<strong>酸梅果酱</strong>，酸甜开胃，越吃越上瘾。<br><br>
+                        <strong>推荐必点：</strong><br>
+                        &#8226; 烤五花肉（果酱味绝了）<br>
+                        &#8226; 烤鸡翅<br>
+                        &#8226; 烤韭菜<br>
+                        &#8226; 烤茄子<br>
+                        &#8226; 再来几瓶冰啤酒 &#127866;<br><br>
+                        宵夜是南宁的灵魂，必须安排！
+                    </div>
+                    <div class="tl-couple">&#127866; 烧烤+啤酒+果酱，南宁宵夜的快乐你想象不到~</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="tl-time">23:30</div>
+                    <div class="tl-title">散步回酒店，满足地睡觉~</div>
+                    <div class="tl-desc">第一天老友粉+亭子码头+平西夜市+果酱烧烤，吃得太满足了！明天青秀山走起~</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-section day2">
+        <div class="day-header">
+            <span class="day-num">DAY 2</span>
+            6月20日 周六 &#10084; 青秀山 + 鸭脚煲 + 琅西夜市
+        </div>
+        <div class="day-content">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="tl-time">09:00 — 10:00</div>
+                    <div class="tl-title">睡到自然醒 + 早餐</div>
+                    <div class="tl-desc">假期不用赶，睡饱了再出发。酒店附近来碗老友粉或卷筒粉~</div>
+                </div>
+
+                <div class="timeline-item sight">
+                    <div class="tl-time">10:00 — 16:00</div>
+                    <div class="tl-title">青秀山风景区（5A）· 一整天 <span class="tag-love">&#10084; 必去</span></div>
+                    <div class="tl-desc">
+                        南宁的城市名片，地铁3号线直达（青秀山站B出口）。慢慢逛可以玩一整天~<br><br>
+                        <strong>上午路线：</strong><br>
+                        北门进 → 龙象塔（登顶看邕江全景）→ 观音禅寺 → 千年苏铁园<br><br>
+                        <strong>中午：</strong><br>
+                        景区内有餐厅和小吃摊，简单吃点垫肚子（粽子、玉米、凉粉等）<br><br>
+                        <strong>下午路线：</strong><br>
+                        雨林大观（天然氧吧，超凉快）→ 兰园 → 桃花岛 → 棕榈园 → 西门出<br><br>
+                        <strong>必打卡：</strong><br>
+                        &#8226; <strong>龙象塔</strong> — 两人一起登塔看全城<br>
+                        &#8226; <strong>观音禅寺</strong> — 东南亚风格佛教建筑<br>
+                        &#8226; <strong>雨林大观</strong> — 夏天最凉快的地方<br>
+                        &#8226; <strong>兰园</strong> — 热带兰花，适合拍照<br>
+                        &#8226; <strong>千年苏铁园</strong> — 上百年的苏铁，震撼
+                    </div>
+                    <div class="tl-tip">&#127807; 景区很大！建议坐观光车（20元/人）+ 步行结合。门票20元/人。多带水、防晒、防蚊喷雾！穿运动鞋~</div>
+                    <div class="tl-couple">&#128141; 一起爬龙象塔、在雨林散步，累了就长椅上歇歇，享受山里的清凉~</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="tl-time">16:00 — 17:30</div>
+                    <div class="tl-title">茶麸洗头 <span class="tag-love">&#10084; 体验</span></div>
+                    <div class="tl-desc">
+                        逛了一天青秀山，正好去体验南宁特色茶麸洗头：<br><br>
+                        茶麸（茶籽渣）洗头是广西传统护发方式，天然不刺激，洗完头发又顺又亮。街边小店很多，20-40元/人。<br><br>
+                        <strong>找法：</strong>美团/大众点评搜"茶麸洗头"，选评分高的店
+                    </div>
+                    <div class="tl-couple">&#128134; 两个人一起去体验，洗完头发香香的~ 爬完山洗个头超解乏</div>
+                </div>
+
+                <div class="timeline-item meal">
+                    <div class="tl-time">18:00 — 19:30</div>
+                    <div class="tl-title">晚餐：老表记鸭脚煲（东盟店）<span class="tag-must">&#10084; 必吃</span></div>
+                    <div class="tl-desc">
+                        你选的这家！南宁人气超高的鸭脚煲。距离青秀山约3-5公里，打车10分钟，很近~<br><br>
+                        鸭脚软烂入味，汤底鲜辣，两个人点一份煲加配菜就超饱：<br><br>
+                        &#8226; 招牌鸭脚煲（必点！）<br>
+                        &#8226; 加腐竹、豆腐泡（吸满汤汁超好吃）<br>
+                        &#8226; 一份青菜解腻<br>
+                        &#8226; 两碗米饭
+                    </div>
+                    <div class="tl-tip">&#127834; 饭点人多，建议提前在美团排号，或者18:00前到</div>
+                </div>
+
+                <div class="timeline-item night">
+                    <div class="tl-time">20:00 — 23:00</div>
+                    <div class="tl-title">琅西夜市 宵夜 <span class="tag-love">&#10084; 必去</span></div>
+                    <div class="tl-desc">
+                        吃完鸭脚煲打车去琅西夜市！你列的这些全都要吃：<br><br>
+                        &#8226; <strong>炒冰</strong> — 现场炒制冰淇淋，芒果味或榴莲味<br>
+                        &#8226; <strong>紫苏鸭腿</strong> — 卤鸭腿配紫苏，香到骨头里<br>
+                        &#8226; <strong>卷筒粉</strong> — 米皮卷馅淋黄皮酱<br>
+                        &#8226; <strong>芒果花</strong> — 切花造型，好看好吃<br>
+                        &#8226; <strong>雷公根甘蔗汁</strong> — 清热解暑草本饮料<br>
+                        &#8226; <strong>吴家红茶冰</strong> — 红茶冰沙，夏天续命水<br><br>
+                        两个人分着吃，每样都尝尝~
+                    </div>
+                    <div class="tl-couple">&#127856; 芒果花很出片记得拍照！炒冰选芒果或榴莲味最经典</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="tl-time">23:00</div>
+                    <div class="tl-title">散步消食，回酒店~</div>
+                    <div class="tl-desc">今天走了不少路也吃了不少，回去好好休息，明天最后一天慢慢来~</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-section day3">
+        <div class="day-header">
+            <span class="day-num">DAY 3</span>
+            6月21日 周日 &#10084; 海鲜 + 南湖 + 回家
+        </div>
+        <div class="day-content">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="tl-time">09:00 — 09:30</div>
+                    <div class="tl-title">睡到自然醒 + 早餐</div>
+                    <div class="tl-desc">最后一天不赶，慢慢起床。来碗老友粉或卷筒粉~</div>
+                </div>
+
+                <div class="timeline-item meal">
+                    <div class="tl-time">10:00 — 10:30</div>
+                    <div class="tl-title">出发去淡村海鲜市场</div>
+                    <div class="tl-desc">10点出发，打车/地铁前往淡村海鲜市场。到了先逛市场挑海鲜~</div>
+                </div>
+
+                <div class="timeline-item meal">
+                    <div class="tl-time">10:30 — 12:30</div>
+                    <div class="tl-title">淡村海鲜市场 · 海鲜大餐！<span class="tag-must">&#10084; 必吃</span></div>
+                    <div class="tl-desc">
+                        南宁最大的海鲜市场！最后一顿正餐上海鲜大餐：<br><br>
+                        <strong>怎么吃：</strong><br>
+                        &#9312; 市场里逛，挑新鲜海鲜<br>
+                        &#9313; 拿到旁边<strong>加工店</strong>现做（清蒸、椒盐、蒜蓉、爆炒任选）<br>
+                        &#9314; 加工费按斤/份算，十几到几十块<br><br>
+                        <strong>推荐必买：</strong><br>
+                        &#8226; <strong>皮皮虾</strong> — 椒盐味，南宁人最爱<br>
+                        &#8226; <strong>花蟹</strong> — 清蒸最鲜，蘸醋吃<br>
+                        &#8226; <strong>生蚝/扇贝</strong> — 蒜蓉蒸，个大肥美<br>
+                        &#8226; <strong>花甲</strong> — 爆炒，配啤酒绝了<br>
+                        &#8226; <strong>白灼虾</strong> — 新鲜的虾白灼最甜<br><br>
+                        <strong>人均：</strong>海鲜+加工费，两个人150-250元就能吃得很好
+                    </div>
+                    <div class="tl-tip">&#129424; 技巧：&#9312; 多问几家比价再买 &#9313; 选活蹦乱跳的 &#9314; 加工店选人多的 &#9315; 上午去海鲜最新鲜</div>
+                    <div class="tl-couple">&#129412; 两个人一起逛海鲜市场、挑海鲜，超有趣的情侣体验！记得拍海鲜大餐的照片~</div>
+                </div>
+
+                <div class="timeline-item sight">
+                    <div class="tl-time">13:00 — 15:00</div>
+                    <div class="tl-title">南湖公园 散步 <span class="tag-love">&#10084; 悠闲</span></div>
+                    <div class="tl-desc">
+                        吃完海鲜打车去南湖公园，免费公园，湖边散步消食~<br><br>
+                        &#8226; 湖边长椅坐坐，聊聊天<br>
+                        &#8226; 租个小船在湖上划一划（约30-50元/船）<br>
+                        &#8226; 湖心岛逛逛，拍几张合照<br>
+                        &#8226; 看看本地人下棋跳舞
+                    </div>
+                    <div class="tl-couple">&#127749; 南湖公园很适合情侣散步，节奏慢下来，享受最后的南宁时光~</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="tl-time">15:00 — 16:30</div>
+                    <div class="tl-title">找吃的 + 买伴手礼</div>
+                    <div class="tl-desc">
+                        回市区逛逛，把还没吃到的补上，顺便买伴手礼：<br><br>
+                        <strong>再吃点：</strong><br>
+                        &#8226; 再嗦一碗<strong>老友粉</strong>（真的吃不腻）<br>
+                        &#8226; 买杯<strong>老盐水</strong>路上喝<br>
+                        &#8226; 打包一份<strong>卷筒粉</strong>或<strong>酸嘢</strong>高铁上吃<br><br>
+                        <strong>伴手礼：</strong><br>
+                        &#8226; 老友粉速食装（超市有卖）<br>
+                        &#8226; 横县茉莉花茶<br>
+                        &#8226; 广西罗汉果<br>
+                        &#8226; 酸嘢真空包装<br>
+                        &#8226; 壮锦文创小物件
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="tl-time">17:00 — 18:00</div>
+                    <div class="tl-title">前往南宁东站</div>
+                    <div class="tl-desc">回酒店拿行李，地铁或打车去南宁东站。端午返程人多，别太赶~</div>
+                    <div class="tl-tip">&#9200; 建议17:00左右出发，预留充足进站时间</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="tl-time">19:08 — 22:40</div>
+                    <div class="tl-title">南宁东 → 广州南 · 回家啦~</div>
+                    <div class="tl-desc">高铁返程，到广州南站后打车/地铁回家~</div>
+                    <div class="tl-couple">&#128156; 三天两晚虽然短暂，但一起吃过的美食和走过的路，都是最甜的回忆~</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 必吃美食清单 -->
+    <div class="card">
+        <h2>&#127836; 必吃美食清单</h2>
+        <p class="card-sub">三天的美食地图，一个都不要漏哦~</p>
+        <hr class="card-divider">
+        <div class="food-grid">
+            <div class="food-card">
+                <div class="food-name">老友粉 <span class="tag-must">&#10084; 必吃</span></div>
+                <div class="food-shop">复记/舒记老友粉</div>
+                <div class="food-desc">南宁头号美食！酸笋+豆豉+辣椒的灵魂组合</div>
+                <div class="food-price">&#165;12-20元/碗</div>
+                <div class="food-tag-when">Day1 午餐 + Day2/3 早餐</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">雄哥宜州果酱烧烤 <span class="tag-must">&#10084; 必吃</span></div>
+                <div class="food-shop">雄哥宜州果酱烧烤</div>
+                <div class="food-desc">刷酸梅果酱的烧烤！酸甜开胃，越吃越上瘾，配冰啤酒绝了</div>
+                <div class="food-price">&#165; 人均30-50元</div>
+                <div class="food-tag-when">Day1 宵夜（晚7点开门）</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">鸭脚煲 <span class="tag-must">&#10084; 必吃</span></div>
+                <div class="food-shop">老表记（东盟店）</div>
+                <div class="food-desc">鸭脚软烂入味，汤底鲜辣，加腐竹豆腐泡吸满汤汁</div>
+                <div class="food-price">&#165; 人均50-70元</div>
+                <div class="food-tag-when">Day2 晚餐</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">淡村海鲜大餐 <span class="tag-must">&#10084; 必吃</span></div>
+                <div class="food-shop">淡村海鲜市场（买+加工）</div>
+                <div class="food-desc">皮皮虾椒盐、花蟹清蒸、蒜蓉生蚝、爆炒花甲、白灼虾</div>
+                <div class="food-price">&#165; 双人150-250元</div>
+                <div class="food-tag-when">Day3 午餐</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">炒冰</div>
+                <div class="food-shop">琅西夜市</div>
+                <div class="food-desc">现场炒制冰淇淋，选芒果味或榴莲味~</div>
+                <div class="food-price">&#165;10-15元/份</div>
+                <div class="food-tag-when">Day2 宵夜</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">紫苏鸭腿</div>
+                <div class="food-shop">琅西夜市</div>
+                <div class="food-desc">卤鸭腿配紫苏，香到骨头里，一人啃一个</div>
+                <div class="food-price">&#165;10-15元/个</div>
+                <div class="food-tag-when">Day2 宵夜</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">卷筒粉</div>
+                <div class="food-shop">琅西夜市/街边早餐店</div>
+                <div class="food-desc">米皮卷馅淋黄皮酱，滑嫩Q弹~</div>
+                <div class="food-price">&#165;5-8元/份</div>
+                <div class="food-tag-when">Day2 宵夜 + Day3 打包</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">芒果花</div>
+                <div class="food-shop">平西夜市/琅西夜市</div>
+                <div class="food-desc">芒果切花造型，好看好吃，拍照必备~</div>
+                <div class="food-price">&#165;8-12元/份</div>
+                <div class="food-tag-when">Day1 + Day2</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">豆腐花 / 烤豆腐</div>
+                <div class="food-shop">平西夜市/夜市小摊</div>
+                <div class="food-desc">豆腐花嫩滑，烤豆腐外焦里嫩~</div>
+                <div class="food-price">&#165;5-10元/份</div>
+                <div class="food-tag-when">Day1 夜市</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">老盐水</div>
+                <div class="food-shop">青芒味/西瓜味</div>
+                <div class="food-desc">酸甜咸冰的南宁特色饮品，消暑神器~</div>
+                <div class="food-price">&#165;8-15元/杯</div>
+                <div class="food-tag-when">Day1 下午茶 + Day3 带走</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">巧八角冰浆</div>
+                <div class="food-shop">巧八角</div>
+                <div class="food-desc">南宁网红冰品，口感绵密，两个人share~</div>
+                <div class="food-price">&#165;12-18元/杯</div>
+                <div class="food-tag-when">Day1 下午茶</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">雷公根甘蔗汁</div>
+                <div class="food-shop">琅西夜市</div>
+                <div class="food-desc">清热解暑的南宁特色草本饮料~</div>
+                <div class="food-price">&#165;8-12元/杯</div>
+                <div class="food-tag-when">Day2 宵夜</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">吴家红茶冰</div>
+                <div class="food-shop">琅西夜市</div>
+                <div class="food-desc">红茶+冰沙，夏天的续命水~</div>
+                <div class="food-price">&#165;8-12元/杯</div>
+                <div class="food-tag-when">Day2 宵夜</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">酸嘢</div>
+                <div class="food-shop">街头小摊/夜市</div>
+                <div class="food-desc">腌制酸甜水果蔬菜，南宁人的快乐零食~</div>
+                <div class="food-price">&#165;5-15元/份</div>
+                <div class="food-tag-when">随时吃 + Day3 打包带走</div>
+            </div>
+            <div class="food-card">
+                <div class="food-name">糖水</div>
+                <div class="food-shop">夜市/糖水铺</div>
+                <div class="food-desc">槐花粉、绿豆海带、芋头西米露~</div>
+                <div class="food-price">&#165;5-12元/碗</div>
+                <div class="food-tag-when">Day1/2 夜市收尾</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 实用贴士 -->
+    <div class="card">
+        <h2>&#128221; 实用贴士</h2>
+        <p class="card-sub">两个人出行，这些要注意哦~</p>
+        <hr class="card-divider">
+        <div class="tip-grid">
+            <div class="tip-card">
+                <h3>&#127777; 天气穿搭</h3>
+                <ul>
+                    <li>6月南宁28-34°C，闷热潮湿</li>
+                    <li>穿透气轻薄衣物，短袖短裤</li>
+                    <li>防晒霜SPF50+必涂</li>
+                    <li>端午前后多阵雨，带折叠伞</li>
+                    <li>防蚊喷雾不能忘</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <h3>&#128652; 市内交通</h3>
+                <ul>
+                    <li>地铁1/2/3号线覆盖主要景点</li>
+                    <li>支付宝/微信扫码乘车</li>
+                    <li>两个人打车比地铁贵不了多少</li>
+                    <li>高峰期用网约车提前叫车</li>
+                    <li>青秀山→老表记 打车10分钟</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <h3>&#128176; 省钱技巧</h3>
+                <ul>
+                    <li>青秀山门票才20元/人，超值</li>
+                    <li>三街两巷、南湖公园、亭子码头免费</li>
+                    <li>夜市小吃两人share更划算</li>
+                    <li>景点门票提前美团买有优惠</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <h3>&#9888; 避坑提醒</h3>
+                <ul>
+                    <li>夜市先问价再拿，避免被宰</li>
+                    <li>打车用网约车，避免绕路</li>
+                    <li>端午景区人多，早点出发</li>
+                    <li>生冷食物适量，备好肠胃药</li>
+                    <li>老表记饭点排队长，提前排号</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <h3>&#128241; 必备APP</h3>
+                <ul>
+                    <li>12306 / 携程 — 火车票</li>
+                    <li>高德地图 — 导航</li>
+                    <li>美团/大众点评 — 找美食排号</li>
+                    <li>滴滴出行 — 打车</li>
+                </ul>
+            </div>
+            <div class="tip-card">
+                <h3>&#127881; 端午特别</h3>
+                <ul>
+                    <li>部分景区有龙舟赛、包粽子活动</li>
+                    <li>关注青秀山公众号看活动安排</li>
+                    <li>三街两巷可能有端午民俗展</li>
+                    <li>超市可以买南宁特色粽子带回去</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 预算 -->
+    <div class="card">
+        <h2>&#128176; 预算参考（双人合计）</h2>
+        <p class="card-sub">丰俭由人，仅供参考~</p>
+        <hr class="card-divider">
+        <table class="budget-table">
+            <thead>
+                <tr>
+                    <th>项目</th>
+                    <th>明细</th>
+                    <th>双人合计</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&#128644; 高铁往返</td>
+                    <td>二等座 &#165;169&#215;2人&#215;2程</td>
+                    <td>&#165;676</td>
+                </tr>
+                <tr>
+                    <td>&#127976; 住宿（2晚）</td>
+                    <td>大床房/双人房</td>
+                    <td>&#165;400-700</td>
+                </tr>
+                <tr>
+                    <td>&#127836; 餐饮（3天）</td>
+                    <td>淡村海鲜+正餐+夜市+宵夜+小吃+饮品</td>
+                    <td>&#165;700-1100</td>
+                </tr>
+                <tr>
+                    <td>&#127915; 门票</td>
+                    <td>青秀山 20&#215;2</td>
+                    <td>&#165;40</td>
+                </tr>
+                <tr>
+                    <td>&#128652; 市内交通</td>
+                    <td>地铁+打车</td>
+                    <td>&#165;150-250</td>
+                </tr>
+                <tr>
+                    <td>&#128134; 茶麸洗头</td>
+                    <td>2人体验</td>
+                    <td>&#165;40-80</td>
+                </tr>
+                <tr>
+                    <td>&#127873; 伴手礼+其他</td>
+                    <td>购物+零食+宵夜酒水</td>
+                    <td>&#165;100-200</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="2"><strong>双人合计</strong></td>
+                    <td><strong>&#165;2100 - &#165;3050</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 清单 -->
+    <div class="card">
+        <h2>&#127890; 出行清单（可勾选）</h2>
+        <p class="card-sub">两个人都检查好，别落下东西哦~</p>
+        <hr class="card-divider">
+        <div class="packing-grid">
+            <div class="packing-item"><input type="checkbox"> 身份证（2人）</div>
+            <div class="packing-item"><input type="checkbox"> 手机+充电宝</div>
+            <div class="packing-item"><input type="checkbox"> 高铁电子票确认</div>
+            <div class="packing-item"><input type="checkbox"> 防晒霜 SPF50+</div>
+            <div class="packing-item"><input type="checkbox"> 遮阳帽/太阳镜</div>
+            <div class="packing-item"><input type="checkbox"> 折叠雨伞</div>
+            <div class="packing-item"><input type="checkbox"> 防蚊喷雾</div>
+            <div class="packing-item"><input type="checkbox"> 轻薄透气衣物&#215;3套</div>
+            <div class="packing-item"><input type="checkbox"> 舒适运动鞋</div>
+            <div class="packing-item"><input type="checkbox"> 拖鞋</div>
+            <div class="packing-item"><input type="checkbox"> 洗漱用品</div>
+            <div class="packing-item"><input type="checkbox"> 肠胃药/创可贴</div>
+            <div class="packing-item"><input type="checkbox"> 少量现金</div>
+            <div class="packing-item"><input type="checkbox"> 自拍杆/三脚架</div>
+            <div class="packing-item"><input type="checkbox"> 纸巾/湿巾</div>
+            <div class="packing-item"><input type="checkbox"> 小零食/水</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>祝我们旅途快乐 <span class="heart">&#10084;</span></p>
+        <p style="margin-top:6px;">收藏本页面，旅途中随时查看~</p>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
