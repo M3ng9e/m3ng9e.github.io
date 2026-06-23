@@ -8,7 +8,7 @@
       <link href="/2026/06/23/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/"/>
       <url>/2026/06/23/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>学二进制安全绕不过汇编，构造ROP时就看不懂了，于是我开始了汇编的学习。我选择的学习资料是王爽老师的《汇编语言》第四版。</p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="循序渐进"><a href="#循序渐进" class="headerlink" title="循序渐进"></a>循序渐进</h2><p>前言中提到了很关键的一点，<strong>学习是循序渐进的过程</strong>。</p><p>如果没有循序渐进的学习，都将会出现盲目的探索和不成系统的情况，也达不到循序渐进学习能达到的深度。</p><p><strong>沿着楼梯上高楼一样，迈出的每一步都不高，结果却上了楼顶。</strong></p><h2 id="知识屏蔽"><a href="#知识屏蔽" class="headerlink" title="知识屏蔽"></a>知识屏蔽</h2><p>进行最小化分割，在学习过程中所接触到的每一个知识点都是当前唯一要去理解的东西。</p><h2 id="每一步都走的清楚而扎实。"><a href="#每一步都走的清楚而扎实。" class="headerlink" title="每一步都走的清楚而扎实。"></a>每一步都走的清楚而扎实。</h2><p>没有完成检测点和实验不要向下学习。</p>]]></content>
       
       
       
