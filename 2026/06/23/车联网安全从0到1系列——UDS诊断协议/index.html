@@ -14,8 +14,14 @@
 <meta property="og:description" content="认识UDSUDS（Unified Diagnostic Services，统一诊断服务）定义在 ISO 14229 标准中，是汽车诊断通信的通用语言。 简单来说，UDS就是对汽车ECU进行诊断的协议，帮助维修师傅通过CAN总线快速定位故障信息更新ECU等等，UDS本质上是一系列服务的集合。 边实践边学习环境搭建 方案一（买设备）：可以看看yichen师傅的视频，【车联网安全】CAN总线UDS诊断介">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/85ee24114618e28921eec6a0154070d7.85ee24114618e28921eec6a0154070d7.v2-da053897466d93763b859865d28b338d_r-20260624152938444.jpg">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/9dc1bd900566ebe391fec805f24d07d9.image-20260624195021674.png">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/f732c53db50903409338e19a81ea785e.image-20260624195312877.png">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/47e2c9b1913ce314351adadc4f787c29.image-20260624200836355.png">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/504f972dc9d3ffa04f7a8c9448db0e17.Picture202407171945237.jpg">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/b5869b73aeb14fb0a22363add29bf7b0.Picture202407181932537.jpg">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/4621293e69a06769ee151576a60572c3.image-20260624201216889.png">
 <meta property="article:published_time" content="2026-06-23T15:37:54.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:41:10.838Z">
+<meta property="article:modified_time" content="2026-06-24T12:18:49.410Z">
 <meta property="article:author" content="M3ng9e">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/85ee24114618e28921eec6a0154070d7.85ee24114618e28921eec6a0154070d7.v2-da053897466d93763b859865d28b338d_r-20260624152938444.jpg">
@@ -116,7 +122,7 @@
     
     
       <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86UDS"><span class="toc-number">1.</span> <span class="toc-text">认识UDS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E5%AE%9E%E8%B7%B5%E8%BE%B9%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">边实践边学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.2.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10"><span class="toc-number">2.3.</span> <span class="toc-text">0x10</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86UDS"><span class="toc-number">1.</span> <span class="toc-text">认识UDS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E5%AE%9E%E8%B7%B5%E8%BE%B9%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">边实践边学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.2.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10-%E8%AF%8A%E6%96%AD%E4%BC%9A%E8%AF%9D%E6%8E%A7%E5%88%B6"><span class="toc-number">2.3.</span> <span class="toc-text">0x10 诊断会话控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.1.</span> <span class="toc-text">测试方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x22-ReadDataByIdentifier%E8%AF%BB%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.4.</span> <span class="toc-text">0x22 ReadDataByIdentifier读服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-DID-%E5%88%97%E8%A1%A8"><span class="toc-number">2.4.1.</span> <span class="toc-text">常用 DID 列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96VIN%E7%A0%81"><span class="toc-number">2.4.2.</span> <span class="toc-text">读取VIN码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x27-SecurityAccess-%E5%AE%89%E5%85%A8%E8%AE%BF%E9%97%AE"><span class="toc-number">2.5.</span> <span class="toc-text">0x27 SecurityAccess 安全访问</span></a></li></ol></li></ol>
       </div>
     
   </span>
@@ -191,16 +197,105 @@
 <h1 id="边实践边学习"><a href="#边实践边学习" class="headerlink" title="边实践边学习"></a>边实践边学习</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><ol>
 <li><p>方案一（买设备）：可以看看yichen师傅的视频，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18Xcge3ELp/?spm_id_from=333.337.search-card.all.click&vd_source=ade4be45ef14d1451786aaf8cff87aa6">【车联网安全】CAN总线UDS诊断介绍及实践</a>，有时间有钱可以搭建环境自己进行实践。</p>
 </li>
-<li><p>方案二（无设备）：<a target="_blank" rel="noopener" href="https://github.com/ex7l0it/uds-server-simulator">https://github.com/ex7l0it/uds-server-simulator</a></p>
-<p>下载好项目后，运行起来。</p>
+<li><p>方案二（无设备）：<a target="_blank" rel="noopener" href="https://github.com/Honinb0n/uds-server-simulator">https://github.com/Honinb0n/uds-server-simulator</a></p>
+<p>下载好项目后，make运行起来。</p>
 </li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./uds-server-simulator -e TBOX vcan0</span><br></pre></td></tr></table></figure>
 
+<p>我选择的是方案二</p>
 <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>可以看这一篇文章入门：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37310388">https://zhuanlan.zhihu.com/p/37310388</a></p>
+<p>这张图表和ISO14299 UDS作为查阅。</p>
 <img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/85ee24114618e28921eec6a0154070d7.85ee24114618e28921eec6a0154070d7.v2-da053897466d93763b859865d28b338d_r-20260624152938444.jpg" alt="img" style="zoom:50%;" />
 
-<h2 id="0x10"><a href="#0x10" class="headerlink" title="0x10"></a>0x10</h2>
+<h2 id="0x10-诊断会话控制"><a href="#0x10-诊断会话控制" class="headerlink" title="0x10 诊断会话控制"></a>0x10 诊断会话控制</h2><p>切换诊断会话，不同会话开放不同功能。</p>
+<table>
+<thead>
+<tr>
+<th><strong>SubFunction</strong></th>
+<th><strong>会话类型</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0x01</td>
+<td>Default Session</td>
+<td>默认会话，功能受限</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>Programming Session</td>
+<td>刷写会话</td>
+</tr>
+<tr>
+<td>0x03</td>
+<td>Extended Session</td>
+<td>扩展诊断会话</td>
+</tr>
+</tbody></table>
+<h4 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 测试1：是否任何会话都能切换</span><br><span class="line">10 02    # 直接切到 Programming Session</span><br><span class="line"></span><br><span class="line"># 测试2：是否有前置条件</span><br><span class="line">10 03    # 先进 Extended</span><br><span class="line">10 02    # 再进 Programming</span><br><span class="line"></span><br><span class="line"># 测试3：切到 Programming 是否需要安全解锁</span><br><span class="line">10 02    # 直接切 Programming，看是否成功</span><br><span class="line"># 如果无需安全解锁 → 高危漏洞</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/9dc1bd900566ebe391fec805f24d07d9.image-20260624195021674.png" alt="image-20260624195021674"></p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/f732c53db50903409338e19a81ea785e.image-20260624195312877.png" alt="image-20260624195312877"></p>
+<p>03比较宽松，一般直接就能切</p>
+<h2 id="0x22-ReadDataByIdentifier读服务"><a href="#0x22-ReadDataByIdentifier读服务" class="headerlink" title="0x22 ReadDataByIdentifier读服务"></a>0x22 ReadDataByIdentifier读服务</h2><p>读取 ECU 数据。</p>
+<h4 id="常用-DID-列表"><a href="#常用-DID-列表" class="headerlink" title="常用 DID 列表"></a>常用 DID 列表</h4><table>
+<thead>
+<tr>
+<th><strong>DID</strong></th>
+<th><strong>含义</strong></th>
+<th><strong>安全价值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0xF186</td>
+<td>Active Diagnostic Session</td>
+<td>会话状态</td>
+</tr>
+<tr>
+<td>0xF187</td>
+<td>Part Number</td>
+<td>固件版本关联</td>
+</tr>
+<tr>
+<td>0xF18A</td>
+<td>Supplier ID</td>
+<td>供应商信息</td>
+</tr>
+<tr>
+<td>0xF190</td>
+<td>VIN</td>
+<td>车辆识别</td>
+</tr>
+<tr>
+<td>0xF195</td>
+<td>System Supplier ID</td>
+<td>系统供应商</td>
+</tr>
+<tr>
+<td>0xF1A0</td>
+<td>Boot Software ID</td>
+<td>Boot 版本（漏洞关联）</td>
+</tr>
+<tr>
+<td>0xF1A2</td>
+<td>Application Software ID</td>
+<td>App 版本（漏洞关联）</td>
+</tr>
+<tr>
+<td>0xF1FF</td>
+<td>实现定义</td>
+<td>自定义数据</td>
+</tr>
+</tbody></table>
+<h3 id="读取VIN码"><a href="#读取VIN码" class="headerlink" title="读取VIN码"></a>读取VIN码</h3><p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/47e2c9b1913ce314351adadc4f787c29.image-20260624200836355.png" alt="image-20260624200836355"></p>
+<p>VIN码是17位，由于数据超出一个 CAN 帧能够携带的数据长度，需要分段发送，接收到一个分段数据的首帧。</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/504f972dc9d3ffa04f7a8c9448db0e17.Picture202407171945237.jpg" alt="1720679348704"></p>
+<p>需要发送一个流控帧，请求后续的数据</p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/b5869b73aeb14fb0a22363add29bf7b0.Picture202407181932537.jpg" alt="1720679085007"></p>
+<p><img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/4621293e69a06769ee151576a60572c3.image-20260624201216889.png" alt="image-20260624201216889"></p>
+<p>得到vin码为LUAU2AUB3GE383467</p>
+<h2 id="0x27-SecurityAccess-安全访问"><a href="#0x27-SecurityAccess-安全访问" class="headerlink" title="0x27 SecurityAccess 安全访问"></a>0x27 SecurityAccess 安全访问</h2>
   </div>
 </article>
 
@@ -229,7 +324,7 @@
     
     
       <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86UDS"><span class="toc-number">1.</span> <span class="toc-text">认识UDS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E5%AE%9E%E8%B7%B5%E8%BE%B9%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">边实践边学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.2.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10"><span class="toc-number">2.3.</span> <span class="toc-text">0x10</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86UDS"><span class="toc-number">1.</span> <span class="toc-text">认识UDS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E5%AE%9E%E8%B7%B5%E8%BE%B9%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">边实践边学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.2.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10-%E8%AF%8A%E6%96%AD%E4%BC%9A%E8%AF%9D%E6%8E%A7%E5%88%B6"><span class="toc-number">2.3.</span> <span class="toc-text">0x10 诊断会话控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.1.</span> <span class="toc-text">测试方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x22-ReadDataByIdentifier%E8%AF%BB%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.4.</span> <span class="toc-text">0x22 ReadDataByIdentifier读服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-DID-%E5%88%97%E8%A1%A8"><span class="toc-number">2.4.1.</span> <span class="toc-text">常用 DID 列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96VIN%E7%A0%81"><span class="toc-number">2.4.2.</span> <span class="toc-text">读取VIN码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x27-SecurityAccess-%E5%AE%89%E5%85%A8%E8%AE%BF%E9%97%AE"><span class="toc-number">2.5.</span> <span class="toc-text">0x27 SecurityAccess 安全访问</span></a></li></ol></li></ol>
       </div>
     
 
