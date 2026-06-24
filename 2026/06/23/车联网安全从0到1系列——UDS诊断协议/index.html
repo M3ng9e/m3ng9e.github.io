@@ -6,17 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="👋 Hello, I’m M3ng9e. I’m deeply passionate about cybersecurity and currently on my journey to becoming a security researcher.">
+    <meta name="description" content="认识UDSUDS（Unified Diagnostic Services，统一诊断服务）定义在 ISO 14229 标准中，是汽车诊断通信的通用语言。 简单来说，UDS就是对汽车ECU进行诊断的协议，帮助维修师傅通过CAN总线快速定位故障信息更新ECU等等，UDS本质上是一系列服务的集合。 边实践边学习环境搭建 方案一（买设备）：可以看看yichen师傅的视频，【车联网安全】CAN总线UDS诊断介">
 <meta property="og:type" content="article">
 <meta property="og:title" content="车联网安全从0到1系列——UDS诊断协议">
 <meta property="og:url" content="http://example.com/2026/06/23/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E4%BB%8E0%E5%88%B01%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94UDS%E8%AF%8A%E6%96%AD%E5%8D%8F%E8%AE%AE/index.html">
 <meta property="og:site_name" content="M3ng9e">
-<meta property="og:description" content="👋 Hello, I’m M3ng9e. I’m deeply passionate about cybersecurity and currently on my journey to becoming a security researcher.">
+<meta property="og:description" content="认识UDSUDS（Unified Diagnostic Services，统一诊断服务）定义在 ISO 14229 标准中，是汽车诊断通信的通用语言。 简单来说，UDS就是对汽车ECU进行诊断的协议，帮助维修师傅通过CAN总线快速定位故障信息更新ECU等等，UDS本质上是一系列服务的集合。 边实践边学习环境搭建 方案一（买设备）：可以看看yichen师傅的视频，【车联网安全】CAN总线UDS诊断介">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/85ee24114618e28921eec6a0154070d7.85ee24114618e28921eec6a0154070d7.v2-da053897466d93763b859865d28b338d_r-20260624152938444.jpg">
 <meta property="article:published_time" content="2026-06-23T15:37:54.000Z">
-<meta property="article:modified_time" content="2026-06-23T15:37:54.817Z">
+<meta property="article:modified_time" content="2026-06-24T07:41:10.838Z">
 <meta property="article:author" content="M3ng9e">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/85ee24114618e28921eec6a0154070d7.85ee24114618e28921eec6a0154070d7.v2-da053897466d93763b859865d28b338d_r-20260624152938444.jpg">
     
     
       
@@ -113,6 +115,10 @@
     </div>
     
     
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86UDS"><span class="toc-number">1.</span> <span class="toc-text">认识UDS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E5%AE%9E%E8%B7%B5%E8%BE%B9%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">边实践边学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.2.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10"><span class="toc-number">2.3.</span> <span class="toc-text">0x10</span></a></li></ol></li></ol>
+      </div>
+    
   </span>
 </div>
 
@@ -180,7 +186,21 @@
   
 
   <div class="content e-content" itemprop="articleBody">
-    
+    <h1 id="认识UDS"><a href="#认识UDS" class="headerlink" title="认识UDS"></a>认识UDS</h1><p><strong>UDS</strong>（Unified Diagnostic Services，统一诊断服务）定义在 <strong>ISO 14229</strong> 标准中，是汽车诊断通信的通用语言。</p>
+<p>简单来说，UDS就是对汽车ECU进行诊断的协议，帮助维修师傅通过CAN总线快速定位故障信息更新ECU等等，UDS本质上是一系列服务的集合。</p>
+<h1 id="边实践边学习"><a href="#边实践边学习" class="headerlink" title="边实践边学习"></a>边实践边学习</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><ol>
+<li><p>方案一（买设备）：可以看看yichen师傅的视频，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18Xcge3ELp/?spm_id_from=333.337.search-card.all.click&vd_source=ade4be45ef14d1451786aaf8cff87aa6">【车联网安全】CAN总线UDS诊断介绍及实践</a>，有时间有钱可以搭建环境自己进行实践。</p>
+</li>
+<li><p>方案二（无设备）：<a target="_blank" rel="noopener" href="https://github.com/ex7l0it/uds-server-simulator">https://github.com/ex7l0it/uds-server-simulator</a></p>
+<p>下载好项目后，运行起来。</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./uds-server-simulator -e TBOX vcan0</span><br></pre></td></tr></table></figure>
+
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>可以看这一篇文章入门：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37310388">https://zhuanlan.zhihu.com/p/37310388</a></p>
+<img src="https://pub-4780fb9811854aaf95e3afc47620b25b.r2.dev/blog/202606/85ee24114618e28921eec6a0154070d7.85ee24114618e28921eec6a0154070d7.v2-da053897466d93763b859865d28b338d_r-20260624152938444.jpg" alt="img" style="zoom:50%;" />
+
+<h2 id="0x10"><a href="#0x10" class="headerlink" title="0x10"></a>0x10</h2>
   </div>
 </article>
 
@@ -208,6 +228,10 @@
 
     
     
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86UDS"><span class="toc-number">1.</span> <span class="toc-text">认识UDS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E5%AE%9E%E8%B7%B5%E8%BE%B9%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">边实践边学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.2.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10"><span class="toc-number">2.3.</span> <span class="toc-text">0x10</span></a></li></ol></li></ol>
+      </div>
+    
 
     <div id="share-footer" style="display: none">
       <ul>
@@ -228,6 +252,8 @@
 
     <div id="actions-footer">
         <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
         
         <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
         <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
